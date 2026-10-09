@@ -837,11 +837,6 @@
     };
 
     window.addToCart = function (name, price, image, variantId = '', numericVariantId = '') {
-      if (window.requireAuth && !window.requireAuth(() => {
-        window.addToCart(name, price, image, variantId, numericVariantId);
-      }, 'add luxury fragrances to your shopping bag')) {
-        return;
-      }
       const existing = cartItems.find(i => i.name === name);
       if (existing) {
         existing.quantity += 1;

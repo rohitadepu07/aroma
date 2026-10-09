@@ -1600,11 +1600,6 @@
     };
 
     window.handleAddToCartClick = function () {
-      if (window.requireAuth && !window.requireAuth(() => {
-        window.handleAddToCartClick();
-      }, 'add luxury fragrances to your shopping bag')) {
-        return;
-      }
       const finalPrice = Math.round(currentProduct.price * selectedMultiplier);
       const itemTitle = `${currentProduct.name} - ${selectedSizeLabel}`;
 
@@ -1680,11 +1675,6 @@
     };
 
     window.addToCart = function (name, price, image, variantId = '', numericVariantId = '', size = '') {
-      if (window.requireAuth && !window.requireAuth(() => {
-        window.addToCart(name, price, image, variantId, numericVariantId, size);
-      }, 'add luxury fragrances to your shopping bag')) {
-        return;
-      }
       const sizeLabel = size || '50ml';
       const existing = cartItems.find(i => i.name === name);
       if (existing) {
