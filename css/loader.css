@@ -1,0 +1,163 @@
+/* ==========================================================================
+   Aroma Qasr — Luxury Preloader / Background Asset Loader Screen
+   ========================================================================== */
+
+#site-preloader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, #181818 0%, #0A0A0A 100%);
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.65s ease,
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  overflow: hidden;
+}
+
+#site-preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px) scale(1.02);
+  pointer-events: none;
+}
+
+.preloader-ambient-glow {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 80, 56, 0.18) 0%, rgba(232, 80, 56, 0) 70%);
+  filter: blur(50px);
+  animation: preloaderPulse 3s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes preloaderPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.9;
+  }
+}
+
+.preloader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.preloader-emblem {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-emblem img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 20px rgba(232, 80, 56, 0.4));
+  animation: emblemFloat 2.5s ease-in-out infinite alternate;
+}
+
+.preloader-emblem-ring {
+  position: absolute;
+  inset: -8px;
+  border: 1.5px dashed rgba(232, 80, 56, 0.35);
+  border-radius: 50%;
+  animation: emblemSpin 14s linear infinite;
+}
+
+@keyframes emblemSpin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes emblemFloat {
+  0% {
+    transform: translateY(0) scale(0.98);
+  }
+  100% {
+    transform: translateY(-4px) scale(1.02);
+  }
+}
+
+.preloader-brand-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0 0 6px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
+}
+
+.preloader-brand-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 30px;
+}
+
+.preloader-progress-track {
+  width: 220px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.preloader-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #E85038, #FF8066, #FFA08A);
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(232, 80, 56, 0.7);
+  transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.preloader-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 220px;
+  margin-top: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+}
+
+#preloader-pct {
+  font-weight: 600;
+  color: #E85038;
+}

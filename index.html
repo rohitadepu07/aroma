@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aroma Qasr | The Scent They Remember</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/AQ-icon.png">
+  <link rel="shortcut icon" href="images/AQ-icon.png">
+  <link rel="apple-touch-icon" href="images/AQ-icon.png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/hero-carousel.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <style>
+    /* Lenis Smooth Scroll */
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+
+    /* Base Reset & Variables */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Nav */
+    .promo-marquee-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .nav-container {
+      position: fixed;
+      top: 38px;
+      width: 100%;
+      z-index: 100;
+      padding: 22px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+      transition: background 0.4s ease, padding 0.4s ease;
+    }
+
+    .nav-container.scrolled {
+      background: rgba(13, 13, 13, 0.95);
+      backdrop-filter: blur(14px);
+      padding: 16px 50px;
+      border: 1.5px solid #E85038;
+      border-top: none;
+      border-radius: 0 0 24px 24px;
+    }
+
+    .nav-container>* {
+      pointer-events: auto;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: #FFF;
+      text-decoration: none;
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+    }
+
+    .nav-link {
+      color: #FFF;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.3s, color 0.3s;
+      position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      opacity: 1;
+      color: #E85038;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #E85038;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cart-trigger-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFF;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .cart-trigger-btn:hover {
+      background: #E85038;
+      color: #FFF;
+      border-color: #E85038;
+      transform: scale(1.05);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      background: #E85038;
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Video Sections */
+    .premium-video-section {
+      position: relative;
+      height: 75vh;
+      min-height: 540px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+    }
+
+    .premium-video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .premium-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.52);
+      z-index: 1;
+    }
+
+    .premium-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .premium-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 600;
+
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .premium-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.15;
+      margin-bottom: 24px;
+      font-style: italic;
+      color: #E85038;
+    }
+
+    .premium-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 620px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 300;
+    }
+
+    /* Shop More Button */
+    .shop-more-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 52px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .shop-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #E85038;
+      color: #FFFFFF;
+      padding: 16px 40px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(232, 80, 56, 0.32);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1.5px solid #E85038;
+    }
+
+    .shop-more-btn:hover {
+      background: #FFFFFF;
+      color: #E85038;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(232, 80, 56, 0.38);
+    }
+
+    .shop-more-btn svg {
+      transition: transform 0.3s ease;
+    }
+
+    .shop-more-btn:hover svg {
+      transform: translateX(5px);
+    }
+
+    /* Hero Side Shop Now Button */
+    .hero-side-shop-btn {
+      position: absolute;
+      right: 56px;
+      bottom: 86px;
+      z-index: 25;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #E85038;
+      color: #FFFFFF;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(232, 80, 56, 0.45);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-side-shop-btn:hover {
+      background: #FFFFFF;
+      color: #E85038;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 35px rgba(232, 80, 56, 0.55);
+    }
+
+    .hero-side-shop-btn svg {
+      transition: transform 0.3s ease;
+    }
+
+    .hero-side-shop-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 768px) {
+      .hero-side-shop-btn {
+        right: 18px;
+        bottom: 20px;
+        padding: 10px 18px;
+        font-size: 12px;
+      }
+    }
+
+    /* Cart Drawer Modal */
+    .custom-cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 400px;
+      max-width: 92vw;
+      height: 100%;
+      height: 100dvh;
+      box-sizing: border-box;
+      background: #141416;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: -20px 0 60px rgba(0, 0, 0, 0.85);
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .custom-cart-drawer.open {
+      transform: translateX(0);
+    }
+
+    .cart-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .cart-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      flex-shrink: 0;
+    }
+
+    .drawer-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #FFF;
+      font-weight: 700;
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      color: #FFF;
+      font-size: 26px;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .drawer-close:hover {
+      opacity: 1;
+      color: #E85038;
+    }
+
+    .drawer-items {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 12px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    .drawer-empty {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      padding: 24px 0;
+      font-size: 14.5px;
+    }
+
+    .cart-item-row {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .cart-item-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-name {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #FFF;
+      margin-bottom: 4px;
+    }
+
+    .cart-item-price {
+      font-size: 13.5px;
+      color: #E85038;
+      font-weight: 700;
+    }
+
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: #999;
+      cursor: pointer;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .cart-item-remove:hover {
+      color: #ff5252;
+      background: rgba(255, 82, 82, 0.12);
+    }
+
+    .drawer-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 14px;
+      padding-bottom: 2px;
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-shrink: 0;
+      background: #141416;
+    }
+
+    .drawer-subtotal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFF;
+    }
+
+    .drawer-checkout-btn {
+      width: 100%;
+      padding: 13px 16px;
+      background: #E85038;
+      color: #FFF;
+      border: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background 0.2s, transform 0.2s;
+      font-size: 13.5px;
+      box-shadow: 0 4px 14px rgba(232, 80, 56, 0.25);
+    }
+
+    .drawer-checkout-btn:hover {
+      background: #D93829;
+      transform: translateY(-1px);
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="js/shopify.js"></script>
+  <script type="module" src="js/carousel.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+</head>
+
+<body>
+  <!-- Top Promo Marquee Banner -->
+  <div class="promo-marquee-bar">
+    <div class="promo-marquee-track">
+      <div class="promo-marquee-content">
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+      </div>
+      <div class="promo-marquee-content" aria-hidden="true">
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav-container" id="main-nav">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" onclick="toggleMobileNav(true)"
+        aria-label="Open Navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="index.html" class="logo">Aroma Qasr</a>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="collections.html" class="nav-link">Shop</a>
+      <a href="about.html" class="nav-link">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="cart-trigger-btn" onclick="openCart()" aria-label="Open Shopping Bag">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="cart-badge" id="nav-cart-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" onclick="toggleMobileNav(false)"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div class="mobile-nav-header">
+      <span class="logo" style="font-size: 24px;">Aroma Qasr</span>
+      <button onclick="toggleMobileNav(false)"
+        style="background:none; border:none; color:#FFF; font-size:26px; cursor:pointer;">&times;</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link active">Home</a>
+      <a href="collections.html" class="mobile-nav-link">Shop Fragrances</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+    </div>
+  </aside>
+
+  <!-- Lenis Init & Nav Scroll Effect -->
+  <script>
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('main-nav');
+      if (window.scrollY > 40) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    window.toggleMobileNav = function (open) {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const backdrop = document.getElementById('mobile-nav-backdrop');
+      if (open) {
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+      } else {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('open');
+      }
+    };
+  </script>
+
+  <!-- HERO IMAGE SLIDESHOW -->
+  <section id="hero-banner" class="hero-image-section">
+
+    <!-- Slide 1 -->
+    <div class="hero-slide active">
+      <img src="images/Vani.png" alt="Aroma Qasr Thai Oud & Thai Aqua" class="hero-image-bg">
+      <div class="hero-overlay-top"></div>
+      <div class="hero-overlay-bottom"></div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="hero-slide">
+      <img src="images/Vökka Thai Oud and Aqua.png" alt="Aroma Qasr Pure Luxury" class="hero-image-bg">
+      <div class="hero-overlay-top"></div>
+      <div class="hero-overlay-bottom"></div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="hero-slide">
+      <img src="images/gold-perfume.png" alt="Aroma Qasr Pure Luxury" class="hero-image-bg">
+      <div class="hero-overlay-top"></div>
+      <div class="hero-overlay-bottom"></div>
+    </div>
+
+    <!-- Arrow Navigation -->
+    <button class="hero-arrow hero-arrow--prev" onclick="heroSlide(-1)" aria-label="Previous slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+    </button>
+    <button class="hero-arrow hero-arrow--next" onclick="heroSlide(1)" aria-label="Next slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    </button>
+
+    <!-- Dot Indicators -->
+    <div class="hero-dots">
+      <button class="hero-dot active" onclick="heroGoTo(0)" aria-label="Slide 1"></button>
+      <button class="hero-dot" onclick="heroGoTo(1)" aria-label="Slide 2"></button>
+      <button class="hero-dot" onclick="heroGoTo(2)" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- Scroll Hint -->
+    <div class="scroll-indicator" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})"
+      style="cursor:pointer;">
+      <span>Explore</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+      </svg>
+    </div>
+
+    <!-- Hero Side Shop Now Button -->
+    <a href="collections.html" class="hero-side-shop-btn" id="hero-shop-now-btn">
+      <span>SHOP NOW</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+  </section>
+
+  <!-- Hero Slideshow Script -->
+  <script>
+    (function () {
+      const slides = document.querySelectorAll('.hero-slide');
+      const dots = document.querySelectorAll('.hero-dot');
+      let current = 0;
+      let timer;
+
+      function show(idx) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (idx + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      window.heroSlide = function (dir) { clearInterval(timer); show(current + dir); startTimer(); };
+      window.heroGoTo = function (idx) { clearInterval(timer); show(idx); startTimer(); };
+
+      function startTimer() { timer = setInterval(() => show(current + 1), 5000); }
+      startTimer();
+    })();
+  </script>
+
+  <!-- PRODUCTS SECTION -->
+  <section id="products" class="products-section">
+
+    <!-- IMAGE 2: A SYMPHONY OF FRAGRANCE SECTION -->
+    <div class="symphony-banner-section">
+      <div class="symphony-banner-card">
+        <div class="symphony-left">
+          <h2 class="symphony-title">A Symphony of Fragrance</h2>
+          <p class="symphony-text">Indulge in the enchanting world of perfumes with Aroma Qasr, the best perfume brand
+            in
+            India. Whether you seek a captivating perfume for men or a mesmerizing fragrance for women, our curated
+            collection has something for everyone.</p>
+          <a href="collections.html" class="symphony-btn">Shop All Perfumes</a>
+        </div>
+        <div class="symphony-categories">
+          <a href="collections.html?category=men" class="category-card" id="cat-men">
+            <img src="images/Men-cat.png" alt="Men's Fragrances">
+            <span class="category-label">Men</span>
+          </a>
+          <a href="collections.html?category=women" class="category-card" id="cat-women">
+            <img src="images/WoMen-catag.png" alt="Women's Fragrances">
+            <span class="category-label">Women</span>
+          </a>
+          <a href="collections.html?category=unisex" class="category-card" id="cat-unisex">
+            <img src="images/unisex.png" alt="Unisex Fragrances">
+            <span class="category-label">Unisex</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collection Header -->
+    <div class="section-header">
+      <span class="section-label">CURATED FLACONS</span>
+      <h2 class="section-headline">Best Selling Fragrances</h2>
+      <p class="section-description">High concentration luxury blends formulated for memorable, long-lasting projection
+        throughout your day.</p>
+    </div>
+
+    <!-- IMAGE 1: PRODUCT CARDS GRID (Live Shopify Products - 4 featured) -->
+    <div class="products-grid" id="curated-fragrances-grid">
+      <!-- Live Shopify products will load here dynamically -->
+    </div>
+
+    <!-- Shop More Button -->
+    <div class="shop-more-container">
+      <a href="collections.html" class="shop-more-btn">
+        <span>Shop More Fragrances</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- THE FINISH -->
+  <section class="premium-video-section">
+    <video class="premium-video-bg" autoplay loop muted playsinline>
+      <source src="videos/Aroma-Qasr.mp4" type="video/mp4">
+    </video>
+    <div class="premium-overlay" style="background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.85) 100%);">
+    </div>
+    <div class="premium-content">
+      <span class="premium-label">LIQUID SIGNATURE</span>
+      <h2 class="premium-headline">The Scent They Remember</h2>
+      <p class="premium-text">Not just a fragrance. A presence that stays with them.
+        <br>Leaving a seductive sillage
+        wherever you walk.</br>
+      </p>
+    </div>
+  </section>
+
+  <!-- Animated Wave Footer -->
+  <footer class="animated-wave-footer">
+    <!-- Moving Wave Background -->
+    <div class="wave-background-wrap">
+      <div class="wave-track">
+        <svg viewBox="0 0 1800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 0 250 C 300 150, 600 350, 900 250 C 1200 150, 1500 350, 1800 250 L 1800 500 L 0 500 Z"
+            fill="rgba(232, 80, 56, 0.05)" />
+          <path d="M 0 280 C 300 350, 600 210, 900 280 C 1200 350, 1500 210, 1800 280 L 1800 500 L 0 500 Z"
+            fill="rgba(232, 80, 56, 0.10)" />
+        </svg>
+        <svg viewBox="0 0 1800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 0 250 C 300 150, 600 350, 900 250 C 1200 150, 1500 350, 1800 250 L 1800 500 L 0 500 Z"
+            fill="rgba(232, 80, 56, 0.05)" />
+          <path d="M 0 280 C 300 350, 600 210, 900 280 C 1200 350, 1500 210, 1800 280 L 1800 500 L 0 500 Z"
+            fill="rgba(232, 80, 56, 0.10)" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- 1. Stay Connected -->
+        <div>
+          <h2 class="footer-heading">Stay Connected</h2>
+          <form class="footer-form"
+            onsubmit="event.preventDefault(); alert('Thank you for subscribing to Aroma Qasr!');">
+            <div class="footer-form-group">
+              <label class="footer-label" for="footer-email">Email</label>
+              <input id="footer-email" class="footer-input" placeholder="Enter your email" type="email" required />
+            </div>
+            <button type="submit" class="footer-btn-subscribe">Subscribe</button>
+          </form>
+        </div>
+
+        <!-- 2. Quick Links -->
+        <div>
+          <h3 class="footer-subheading">Quick Links</h3>
+          <nav class="footer-links-nav">
+            <a href="index.html" class="footer-nav-link">Home</a>
+            <a href="collections.html" class="footer-nav-link">Shop Fragrances</a>
+            <a href="about.html" class="footer-nav-link">About</a>
+            <a href="collections.html?category=men" class="footer-nav-link">Men's Repertoire</a>
+            <a href="collections.html?category=women" class="footer-nav-link">Women's Repertoire</a>
+          </nav>
+        </div>
+
+        <!-- 3. Contact Us -->
+        <div>
+          <h3 class="footer-subheading">Contact Us</h3>
+          <address class="footer-address">
+            <p style="margin:0;">Aroma Qasr Fragrance House</p>
+            <p style="margin:0;">Mumbai, India</p>
+            <p style="margin:0;">Phone: <a href="tel:+919876543210">+91 9137961830</a></p>
+            <p style="margin:0;">Email: <a href="mailto:ContactAromaQasr@gmail.com">ContactAromaQasr@gmail.com</a></p>
+          </address>
+        </div>
+
+        <!-- 4. Follow Us -->
+        <div>
+          <h3 class="footer-subheading">Follow Us</h3>
+          <div class="footer-social-row">
+            <a href="#" class="footer-social-btn" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z">
+                </path>
+                <circle cx="12" cy="13" r="3"></circle>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p class="footer-copyright">© 2026 Aroma Qasr Perfumes. All rights reserved.</p>
+        <div class="footer-payment-badges">
+          <span>VISA</span>
+          <span>MASTERCARD</span>
+          <span>UPI</span>
+          <span>AMEX</span>
+        </div>
+      </div>
+      <div class="footer-brand-title">Aroma Qasr</div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WIDGETS -->
+  <button class="floating-scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Custom Cart Drawer & State Handler -->
+  <div class="cart-backdrop" id="cart-backdrop" onclick="closeCart()"></div>
+  <aside class="custom-cart-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Shopping Bag</h3>
+      <button class="drawer-close" onclick="closeCart()">&times;</button>
+    </div>
+    <div class="drawer-items" id="cart-items-container">
+      <div class="drawer-empty">Your shopping bag is empty.</div>
+    </div>
+    <div class="drawer-footer">
+      <div class="drawer-subtotal">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">₹0</span>
+      </div>
+      <button class="drawer-checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <script>
+    // Cart Drawer State Management
+    let cartItems = JSON.parse(localStorage.getItem('Aroma Qasr_cart') || localStorage.getItem('Aroma Qasr_cart') || localStorage.getItem('rajs_cart') || '[]');
+
+    function updateCartUI() {
+      const countBadge = document.getElementById('nav-cart-count');
+      const container = document.getElementById('cart-items-container');
+      const subtotalEl = document.getElementById('cart-subtotal');
+
+      countBadge.textContent = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+      if (cartItems.length === 0) {
+        container.innerHTML = '<div class="drawer-empty">Your shopping bag is empty.</div>';
+        subtotalEl.textContent = '₹0';
+        return;
+      }
+
+      let total = 0;
+      container.innerHTML = cartItems.map((item, idx) => {
+        total += item.price * item.quantity;
+        return `
+          <div class="cart-item-row">
+            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+            <div class="cart-item-info">
+              <div class="cart-item-name">${item.name}</div>
+              <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')} &times; ${item.quantity}</div>
+            </div>
+            <button class="cart-item-remove" onclick="removeFromCart(${idx})" title="Remove item" aria-label="Remove item">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line>
+                <line x1="14" y1="11" x2="14" y2="17"></line>
+              </svg>
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      subtotalEl.textContent = '₹' + total.toLocaleString('en-IN');
+      localStorage.setItem('Aroma Qasr_cart', JSON.stringify(cartItems));
+    }
+
+    window.openCart = function () {
+      document.getElementById('cart-drawer').classList.add('open');
+      document.getElementById('cart-backdrop').classList.add('open');
+    };
+
+    window.closeCart = function () {
+      document.getElementById('cart-drawer').classList.remove('open');
+      document.getElementById('cart-backdrop').classList.remove('open');
+    };
+
+    window.addToCart = function (name, price, image, variantId = '', numericVariantId = '') {
+      if (window.requireAuth && !window.requireAuth(() => {
+        window.addToCart(name, price, image, variantId, numericVariantId);
+      }, 'add luxury fragrances to your shopping bag')) {
+        return;
+      }
+      const existing = cartItems.find(i => i.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cartItems.push({ name, price, image, variantId, numericVariantId, quantity: 1 });
+      }
+      updateCartUI();
+      openCart();
+    };
+
+    window.removeFromCart = function (index) {
+      cartItems.splice(index, 1);
+      updateCartUI();
+    };
+
+    window.proceedToCheckout = async function () {
+      if (cartItems.length === 0) {
+        alert('Your bag is empty.');
+        return;
+      }
+      if (window.requireAuth && !window.requireAuth(() => {
+        window.proceedToCheckout();
+      }, 'proceed to checkout')) {
+        return;
+      }
+      try {
+        localStorage.setItem('aroma_last_order_items', JSON.stringify(cartItems));
+        localStorage.setItem('aroma_last_order_id', 'AQ-' + Math.floor(10000 + Math.random() * 90000));
+      } catch (e) { }
+
+      const checkoutBtn = document.querySelector('.drawer-checkout-btn');
+      if (checkoutBtn) {
+        checkoutBtn.textContent = 'Connecting to Checkout...';
+        checkoutBtn.disabled = true;
+      }
+      try {
+        if (window.createShopifyCheckout) {
+          const checkoutUrl = await window.createShopifyCheckout(cartItems);
+          if (checkoutUrl) {
+            window.location.href = checkoutUrl;
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('Direct checkout failed, redirecting to store cart:', err);
+      }
+      window.location.href = 'order-confirmation.html';
+    };
+
+    window.openConciergeChat = function () {
+      alert("Welcome to Aroma Qasr Fragrance Concierge! Connecting you with our master olfactory consultant on WhatsApp...");
+    };
+
+    function detectProductVolume(product) {
+      const text = `${product.title || product.name || ''} ${product.handle || ''} ${product.description || ''}`.toLowerCase();
+      if (text.match(/2\s*[xX*]\s*100\s*ml/i) || text.match(/100ml.*(?:pack|set)\s*of\s*2/i)) return '2 x 100ml';
+      if (text.match(/2\s*[xX*]\s*50\s*ml/i) || text.match(/50ml.*(?:pack|combo|set)\s*of\s*2/i) || text.match(/combo.*2\s*[xX*]\s*50/i)) return '2 x 50ml';
+      const matchNxY = text.match(/(\d+)\s*[xX*]\s*(\d+)\s*ml/i);
+      if (matchNxY) return `${matchNxY[1]} x ${matchNxY[2]}ml`;
+      if (text.match(/20\s*ml/i) || text.match(/pocket/i)) return '20 ml';
+      if (text.match(/110\s*ml/i)) return '110 ml';
+      if (text.match(/100\s*ml/i) || text.match(/thai\s*aqua/i) || text.match(/thai\s*oud/i)) return '100 ml';
+      if (text.match(/50\s*ml/i)) return '50 ml';
+      return '100 ml';
+    }
+
+    function getRatingCount(key) {
+      let hash = 0;
+      const str = String(key || 'fragrance');
+      for (let i = 0; i < str.length; i++) {
+        hash = ((hash << 5) - hash) + str.charCodeAt(i);
+        hash |= 0;
+      }
+      return 54 + (Math.abs(hash) % 245);
+    }
+
+    // Live Shopify Products Sync (Curated 4 Featured on Home)
+    async function initLiveShopifyProducts() {
+      try {
+        if (!window.fetchLiveShopifyProducts) return;
+        const liveProducts = await window.fetchLiveShopifyProducts();
+        if (liveProducts && liveProducts.length > 0) {
+          const grid = document.getElementById('curated-fragrances-grid');
+          grid.innerHTML = '';
+
+          // Target 4 featured products: Thai Aqua, Godfather Combo, Old Money Combo, and Pure Luxury (20ml)
+          const featuredKeywords = ['thai-aqua', 'godfather', 'old-money', 'pure'];
+          let featured = [];
+
+          featuredKeywords.forEach(kw => {
+            const found = liveProducts.find(p => (p.handle || p.title || '').toLowerCase().includes(kw));
+            if (found && !featured.some(f => f.handle === found.handle)) {
+              featured.push(found);
+            }
+          });
+
+          // Fill up to 4 if any keyword was not matched
+          if (featured.length < 4) {
+            liveProducts.forEach(p => {
+              if (featured.length < 4 && !featured.some(f => f.handle === p.handle)) {
+                featured.push(p);
+              }
+            });
+          }
+
+          featured.forEach(prod => {
+            const vol = detectProductVolume(prod);
+            const reviews = getRatingCount(prod.handle || prod.title);
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.id = `card-${prod.handle}`;
+            card.setAttribute('data-category', 'unisex,men,women,fresh,woody');
+            card.innerHTML = `
+              <div class="product-card__image-wrapper">
+                <div class="product-card__badges">
+                  <span class="badge-dark">Unisex</span>
+                  <span class="badge-dark" style="background:#E85038; color:#fff;">Official</span>
+                </div>
+                <a href="product.html?handle=${prod.handle}" class="product-card__image-link">
+                  <img src="${prod.image}" alt="${prod.title}">
+                </a>
+                <button onclick="addToCart('${prod.title.replace(/'/g, "\\'")}', ${prod.price}, '${prod.image}', '${prod.variantId}', '${prod.numericVariantId}')" class="card-action-btn">ADD TO CART</button>
+              </div>
+              <div class="product-card__content">
+                <a href="product.html?handle=${prod.handle}" class="product-card__title">${prod.title}</a>
+                <div class="product-card__meta-row">
+                  <div class="rating-stars">★★★★★ <span class="rating-count">(${reviews})</span></div>
+                  <div class="size-badges">
+                    <span class="size-pill">${vol}</span>
+                  </div>
+                </div>
+                <div class="product-card__price-row">
+                  <span class="price-current">Rs. ${prod.price.toLocaleString('en-IN')}</span>
+                  <span class="price-original">Rs. ${(prod.price * 2.2).toFixed(0)}</span>
+                </div>
+                <div class="product-card__notes">Eau De Parfum | Luxury Olfactory Blend</div>
+              </div>
+            `;
+            grid.appendChild(card);
+          });
+        }
+      } catch (e) {
+        console.error('Error fetching live Shopify products:', e);
+      }
+    }
+
+    updateCartUI();
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(initLiveShopifyProducts, 200);
+    });
+  </script>
+  <script src="js/auth.js"></script>
+  <script src="js/loader.js"></script>
+</body>
+
+</html>

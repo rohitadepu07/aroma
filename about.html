@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About & Craftsmanship | Aroma Qasr Luxury Perfumes</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/AQ-icon.png">
+  <link rel="shortcut icon" href="images/AQ-icon.png">
+  <link rel="apple-touch-icon" href="images/AQ-icon.png">
+  <meta name="description"
+    content="Discover the heritage, artistry, and vision behind Aroma Qasr. Crafted with rare essences, high oil concentrations, and bespoke flacon architecture.">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/hero-carousel.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      color: #111111;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav-container {
+      background: #FFFFFF;
+      backdrop-filter: none;
+      padding: 22px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1.5px solid #E85038;
+      border-top: none;
+      border-radius: 0 0 24px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(232, 80, 56, 0.06);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #111;
+      text-decoration: none;
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+    }
+
+    .nav-link {
+      color: #333;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.25s;
+      position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #E85038;
+      font-weight: 700;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #E85038;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cart-trigger-btn {
+      background: #F8F8FA;
+      border: 1.5px solid #EBEBEB;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #111;
+      position: relative;
+      transition: all 0.25s;
+    }
+
+    .cart-trigger-btn:hover {
+      background: #E85038;
+      border-color: #E85038;
+      color: #FFF;
+      transform: translateY(-2px);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: #E85038;
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 700;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #FFF;
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #111;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    /* ── HERO BANNER ── */
+    .about-hero {
+      position: relative;
+      padding: 90px 24px 70px;
+      background: linear-gradient(180deg, #FFF8F6 0%, #FFFFFF 100%);
+      text-align: center;
+      border-bottom: 1px solid rgba(232, 80, 56, 0.12);
+    }
+
+    .about-hero-badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #E85038;
+      background: rgba(232, 80, 56, 0.09);
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(232, 80, 56, 0.2);
+    }
+
+    .about-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5.5vw, 62px);
+      line-height: 1.15;
+      color: #111111;
+      max-width: 900px;
+      margin: 0 auto 20px;
+      font-weight: 700;
+    }
+
+    .about-hero-subtitle {
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.7;
+      color: #555555;
+      max-width: 720px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    /* ── MAIN CONTENT CONTAINER ── */
+    .about-main-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 80px 24px 100px;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 90px;
+    }
+
+    /* ── STORY SPLIT SECTION ── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .story-grid.reverse {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .story-media-box {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid #E85038;
+      box-shadow: 0 16px 40px rgba(232, 80, 56, 0.14);
+      background: #F8F8FA;
+    }
+
+    .story-media-box img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .story-media-box:hover img {
+      transform: scale(1.04);
+    }
+
+    .story-media-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(17, 17, 17, 0.88);
+      backdrop-filter: blur(8px);
+      color: #FFF;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .story-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .story-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #E85038;
+    }
+
+    .story-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.8vw, 42px);
+      line-height: 1.22;
+      color: #111111;
+      margin: 0;
+    }
+
+    .story-paragraph {
+      font-size: 15.5px;
+      line-height: 1.75;
+      color: #444444;
+      margin: 0;
+    }
+
+    .story-highlight-box {
+      background: #FFF8F6;
+      border-left: 4px solid #E85038;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: #222222;
+      line-height: 1.6;
+    }
+
+    /* ── 4 PILLARS GRID ── */
+    .pillars-section {
+      background: #111111;
+      border-radius: 28px;
+      padding: 70px 48px;
+      color: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    }
+
+    .pillars-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 50px;
+    }
+
+    .pillars-header .section-label {
+      color: #E85038;
+    }
+
+    .pillars-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 4vw, 44px);
+      color: #FFFFFF;
+      margin-bottom: 14px;
+    }
+
+    .pillars-header p {
+      color: #A0A0A0;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+
+    .pillar-card {
+      background: #1C1C1E;
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 32px 24px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-8px);
+      border-color: #E85038;
+      box-shadow: 0 16px 36px rgba(232, 80, 56, 0.2);
+    }
+
+    .pillar-icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(232, 80, 56, 0.15);
+      border: 1px solid rgba(232, 80, 56, 0.3);
+      color: #E85038;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .pillar-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    .pillar-card-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #B3B3B3;
+    }
+
+    /* ── STATS COUNTER ROW ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+      padding: 30px 0;
+      border-top: 1px solid #ECECEC;
+      border-bottom: 1px solid #ECECEC;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 50px);
+      font-weight: 700;
+      color: #E85038;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #666;
+    }
+
+    /* ── CTA BANNER ── */
+    .about-cta-banner {
+      background: linear-gradient(135deg, #E85038 0%, #D93829 100%);
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+      color: #FFFFFF;
+      box-shadow: 0 16px 40px rgba(232, 80, 56, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .about-cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      margin: 0;
+    }
+
+    .about-cta-banner p {
+      font-size: 16px;
+      max-width: 600px;
+      opacity: 0.95;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .about-cta-btn {
+      background: #FFFFFF;
+      color: #E85038;
+      padding: 16px 36px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-cta-btn:hover {
+      background: #111111;
+      color: #FFFFFF;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+
+      .story-grid,
+      .story-grid.reverse {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 16px;
+      }
+
+      .pillars-section {
+        padding: 50px 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 16px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-nav-toggle {
+        display: block;
+      }
+
+      .about-hero {
+        padding: 60px 16px 50px;
+      }
+
+      .about-main-wrap {
+        padding: 50px 16px 70px;
+        gap: 60px;
+      }
+    }
+  </style>
+  <script type="module" src="js/shopify.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+</head>
+
+<body>
+  <!-- Top Promo Marquee Banner -->
+  <div class="promo-marquee-bar">
+    <div class="promo-marquee-track">
+      <div class="promo-marquee-content">
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+      </div>
+      <div class="promo-marquee-content" aria-hidden="true">
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" onclick="toggleMobileNav(true)"
+        aria-label="Open Navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="index.html" class="logo">Aroma Qasr</a>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="collections.html" class="nav-link">Shop</a>
+      <a href="about.html" class="nav-link active">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="cart-trigger-btn" onclick="openCart()" aria-label="Open Shopping Bag">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="cart-badge" id="nav-cart-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" onclick="toggleMobileNav(false)"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div class="mobile-nav-header">
+      <span class="logo" style="font-size: 24px; color: #FFF;">Aroma Qasr</span>
+      <button onclick="toggleMobileNav(false)"
+        style="background:none; border:none; color:#FFF; font-size:26px; cursor:pointer;">&times;</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="collections.html" class="mobile-nav-link">Shop Fragrances</a>
+      <a href="about.html" class="mobile-nav-link active">About</a>
+      <a href="collections.html?category=men" class="mobile-nav-link">Men's Perfumes</a>
+      <a href="collections.html?category=women" class="mobile-nav-link">Women's Perfumes</a>
+    </div>
+  </aside>
+
+  <!-- Header Hero -->
+  <header class="about-hero">
+    <span class="about-hero-badge">THE MAISON PHILOSOPHY</span>
+    <h1 class="about-hero-title">The Scent They Remember</h1>
+    <p class="about-hero-subtitle">
+      Aroma Qasr was born from a singular passion: to fuse the opulent heritage of royal oriental perfumery with
+      modern European craftsmanship, formulating scents that linger with regal elegance.
+    </p>
+  </header>
+
+  <!-- Main Content Wrap -->
+  <main class="about-main-wrap">
+
+    <!-- Story Genesis 1 -->
+    <section class="story-grid">
+      <div class="story-media-box">
+        <img src="images/Vani.png" alt="Aroma Qasr Artisanal Flacon">
+        <span class="story-media-badge">Artisanal Extraction</span>
+      </div>
+      <div class="story-content">
+        <span class="story-tag">OUR ORIGIN & VISION</span>
+        <h2 class="story-heading">A Royal Scent Symphony Born in the Heart of India</h2>
+        <p class="story-paragraph">
+          In a world saturated with fleeting, diluted scents, Aroma Qasr was founded to restore the true grandeur of
+          luxury perfumery. We believe fragrance is not merely an accessory — it is an invisible crown, a personal
+          signature that announces your presence and lingers long after you leave.
+        </p>
+        <p class="story-paragraph">
+          Every creation in our atelier begins with ethically harvested natural oils: Mysore sandalwood, rare Assam
+          agarwood (oud), hand-picked Damask rose, and sun-drenched Calabrian bergamot.
+        </p>
+        <div class="story-highlight-box">
+          "We do not create perfumes for a season; we craft memories that stay etched in the soul."
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Counter -->
+    <section class="stats-row">
+      <div class="stat-item">
+        <div class="stat-number">25%+</div>
+        <div class="stat-label">Pure Essence Concentration</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">14+ Hrs</div>
+        <div class="stat-label">Lasting Skin Sillage</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Cruelty-Free & IFRA Certified</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">50,000+</div>
+        <div class="stat-label">Impression Connoisseurs</div>
+      </div>
+    </section>
+
+    <!-- Story Genesis 2 -->
+    <section class="story-grid reverse">
+      <div class="story-content">
+        <span class="story-tag">THE FLACON & ARCHITECTURE</span>
+        <h2 class="story-heading">Sculpted Glass Engineered for Timeless Elegance</h2>
+        <p class="story-paragraph">
+          The vessel that holds your fragrance is an objet d'art in its own right. Each Aroma Qasr flacon is crafted
+          with ultra-clear heavy glass, finished with an signature knurled gold collar and micro-diffusion atomizer that
+          delivers an ultra-fine, even scent cloud.
+        </p>
+        <p class="story-paragraph">
+          Whether placed on your vanity or slipped into your blazer pocket in our 20ml travel edition, Aroma Qasr is
+          designed to elevate your everyday ritual into an encounter of pure luxury.
+        </p>
+      </div>
+      <div class="story-media-box">
+        <img src="images/Vökka Thai Oud and Aqua.png" alt="Aroma Qasr Flacon Architecture">
+        <span class="story-media-badge">Precision Bottling</span>
+      </div>
+    </section>
+
+    <!-- A SYMPHONY OF FRAGRANCE SECTION -->
+    <section class="symphony-banner-section" style="padding: 0; margin-bottom: 0;">
+      <div class="symphony-banner-card">
+        <div class="symphony-left">
+          <h2 class="symphony-title">A Symphony of Fragrance</h2>
+          <p class="symphony-text">Indulge in the enchanting world of perfumes with Aroma Qasr, the best perfume
+            brand in
+            India. Whether you seek a captivating perfume for men or a mesmerizing fragrance for women, our curated
+            collection has something for everyone.</p>
+          <a href="collections.html" class="symphony-btn">Shop All Perfumes</a>
+        </div>
+        <div class="symphony-categories">
+          <a href="collections.html?category=men" class="category-card">
+            <img src="images/Men-cat.png" alt="Men">
+            <span class="category-label">Men</span>
+          </a>
+          <a href="collections.html?category=women" class="category-card">
+            <img src="images/WoMen-catag.png" alt="Women">
+            <span class="category-label">Women</span>
+          </a>
+          <a href="collections.html?category=unisex" class="category-card">
+            <img src="images/unisex.png" alt="Unisex">
+            <span class="category-label">Unisex</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ANIMATED WAVE FOOTER -->
+  <footer class="animated-wave-footer">
+    <!-- Seamless Wave Canvas Background -->
+    <div class="wave-background-wrap">
+      <div class="wave-track">
+        <svg viewBox="0 0 1440 280" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0,140 C360,20 720,260 1080,140 C1260,80 1380,80 1440,140 L1440,280 L0,280 Z" fill="#FFEBE5"
+            fill-opacity="0.9" />
+          <path d="M0,170 C360,240 720,80 1080,190 C1260,245 1380,210 1440,170 L1440,280 L0,280 Z" fill="#E85038"
+            fill-opacity="0.1" />
+          <path d="M0,210 C360,130 720,270 1080,180 C1260,135 1380,165 1440,210 L1440,280 L0,280 Z" fill="#E85038"
+            fill-opacity="0.16" />
+        </svg>
+        <svg viewBox="0 0 1440 280" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0,140 C360,20 720,260 1080,140 C1260,80 1380,80 1440,140 L1440,280 L0,280 Z" fill="#FFEBE5"
+            fill-opacity="0.9" />
+          <path d="M0,170 C360,240 720,80 1080,190 C1260,245 1380,210 1440,170 L1440,280 L0,280 Z" fill="#E85038"
+            fill-opacity="0.1" />
+          <path d="M0,210 C360,130 720,270 1080,180 C1260,135 1380,165 1440,210 L1440,280 L0,280 Z" fill="#E85038"
+            fill-opacity="0.16" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- 1. Stay Connected -->
+        <div>
+          <h2 class="footer-heading">Stay Connected</h2>
+          <form class="footer-form"
+            onsubmit="event.preventDefault(); alert('Thank you for subscribing to Aroma Qasr!');">
+            <div class="footer-form-group">
+              <label class="footer-label" for="footer-email">Email</label>
+              <input id="footer-email" class="footer-input" placeholder="Enter your email" type="email" required />
+            </div>
+            <button type="submit" class="footer-btn-subscribe">Subscribe</button>
+          </form>
+        </div>
+
+        <!-- 2. Quick Links -->
+        <div>
+          <h3 class="footer-subheading">Quick Links</h3>
+          <nav class="footer-links-nav">
+            <a href="index.html" class="footer-nav-link">Home</a>
+            <a href="collections.html" class="footer-nav-link">Shop Fragrances</a>
+            <a href="about.html" class="footer-nav-link">About</a>
+            <a href="collections.html?category=men" class="footer-nav-link">Men's Repertoire</a>
+            <a href="collections.html?category=women" class="footer-nav-link">Women's Repertoire</a>
+          </nav>
+        </div>
+
+        <!-- 3. Contact Us -->
+        <div>
+          <h3 class="footer-subheading">Contact Us</h3>
+          <address class="footer-address">
+            <p style="margin:0;">Aroma Qasr Fragrance House</p>
+            <p style="margin:0;">Mumbai, India</p>
+            <p style="margin:0;">Phone: <a href="tel:+919876543210">+91 9137961830</a></p>
+            <p style="margin:0;">Email: <a href="mailto:ContactAromaQasr@gmail.com">ContactAromaQasr@gmail.com</a></p>
+          </address>
+        </div>
+
+        <!-- 4. Follow Us -->
+        <div>
+          <h3 class="footer-subheading">Follow Us</h3>
+          <div class="footer-social-row">
+            <a href="#" class="footer-social-btn" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z">
+                </path>
+                <circle cx="12" cy="13" r="3"></circle>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p class="footer-copyright">© 2026 Aroma Qasr Perfumes. All rights reserved.</p>
+        <div class="footer-payment-badges">
+          <span>VISA</span>
+          <span>MASTERCARD</span>
+          <span>UPI</span>
+          <span>AMEX</span>
+        </div>
+      </div>
+      <div class="footer-brand-title">Aroma Qasr</div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="cart-backdrop" id="cart-backdrop" onclick="closeCart()"></div>
+  <aside class="custom-cart-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Shopping Bag</h3>
+      <button class="drawer-close" onclick="closeCart()">&times;</button>
+    </div>
+    <div class="drawer-items" id="cart-items-container">
+      <div class="drawer-empty">Your shopping bag is empty.</div>
+    </div>
+    <div class="drawer-footer">
+      <div class="drawer-subtotal">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">₹0</span>
+      </div>
+      <button class="drawer-checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <script>
+    window.toggleMobileNav = function (open) {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const backdrop = document.getElementById('mobile-nav-backdrop');
+      if (open) {
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+      } else {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('open');
+      }
+    };
+
+    // Cart Management
+    let cartItems = JSON.parse(localStorage.getItem('Aroma Qasr_cart') || localStorage.getItem('aroma_qasr_cart') || '[]');
+
+    function updateCartUI() {
+      const countBadge = document.getElementById('nav-cart-count');
+      const container = document.getElementById('cart-items-container');
+      const subtotalEl = document.getElementById('cart-subtotal');
+
+      if (countBadge) countBadge.textContent = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+      if (cartItems.length === 0) {
+        if (container) container.innerHTML = '<div class="drawer-empty">Your shopping bag is empty.</div>';
+        if (subtotalEl) subtotalEl.textContent = '₹0';
+        return;
+      }
+
+      let total = 0;
+      if (container) {
+        container.innerHTML = cartItems.map((item, idx) => {
+          total += item.price * item.quantity;
+          return `
+            <div class="cart-item-row">
+              <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+              <div class="cart-item-info">
+                <div class="cart-item-name">${item.name} (${item.size || '50ml'})</div>
+                <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')} &times; ${item.quantity}</div>
+              </div>
+              <button class="cart-item-remove" onclick="removeFromCart(${idx})" title="Remove item" aria-label="Remove item">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  <line x1="10" y1="11" x2="10" y2="17"></line>
+                  <line x1="14" y1="11" x2="14" y2="17"></line>
+                </svg>
+              </button>
+            </div>
+          `;
+        }).join('');
+      }
+
+      if (subtotalEl) subtotalEl.textContent = '₹' + total.toLocaleString('en-IN');
+      localStorage.setItem('Aroma Qasr_cart', JSON.stringify(cartItems));
+      localStorage.setItem('aroma_qasr_cart', JSON.stringify(cartItems));
+    }
+
+    window.openCart = function () {
+      document.getElementById('cart-drawer').classList.add('open');
+      document.getElementById('cart-backdrop').classList.add('open');
+    };
+
+    window.closeCart = function () {
+      document.getElementById('cart-drawer').classList.remove('open');
+      document.getElementById('cart-backdrop').classList.remove('open');
+    };
+
+    window.removeFromCart = function (index) {
+      cartItems.splice(index, 1);
+      updateCartUI();
+    };
+
+    window.proceedToCheckout = async function () {
+      if (cartItems.length === 0) {
+        alert('Your bag is empty.');
+        return;
+      }
+      if (window.requireAuth && !window.requireAuth(() => {
+        window.proceedToCheckout();
+      }, 'proceed to checkout')) {
+        return;
+      }
+      try {
+        localStorage.setItem('aroma_last_order_items', JSON.stringify(cartItems));
+        localStorage.setItem('aroma_last_order_id', 'AQ-' + Math.floor(10000 + Math.random() * 90000));
+      } catch (e) { }
+
+      const checkoutBtn = document.querySelector('.drawer-checkout-btn');
+      if (checkoutBtn) {
+        checkoutBtn.textContent = 'Connecting to Checkout...';
+        checkoutBtn.disabled = true;
+      }
+      try {
+        if (window.createShopifyCheckout) {
+          const checkoutUrl = await window.createShopifyCheckout(cartItems);
+          if (checkoutUrl) {
+            window.location.href = checkoutUrl;
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('Direct checkout failed, redirecting to store cart:', err);
+      }
+      window.location.href = 'order-confirmation.html';
+    };
+
+    updateCartUI();
+
+    const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  </script>
+  <script src="js/auth.js"></script>
+  <script src="js/loader.js"></script>
+</body>
+
+</html>

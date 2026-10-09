@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fragrance Details | Aroma Qasr Luxury Fragrances</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/AQ-icon.png">
+  <link rel="shortcut icon" href="images/AQ-icon.png">
+  <link rel="apple-touch-icon" href="images/AQ-icon.png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/hero-carousel.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <style>
+    /* =============================================
+       Aroma Qasr PRODUCT PAGE — WHITE / BLACK / ORANGE
+       ============================================= */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      color: #111111;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav-container {
+      background: #FFFFFF;
+      backdrop-filter: none;
+      padding: 22px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1.5px solid #E85038;
+      border-top: none;
+      border-radius: 0 0 24px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(232, 80, 56, 0.06);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #111;
+      text-decoration: none;
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+    }
+
+    .nav-link {
+      color: #333;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.25s;
+      position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #E85038;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #E85038;
+    }
+
+    .cart-trigger-btn {
+      background: #F5F5F5;
+      border: 1px solid #E0E0E0;
+      color: #111;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .cart-trigger-btn:hover {
+      background: #E85038;
+      color: #FFF;
+      border-color: #E85038;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      background: #E85038;
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── MOBILE NAV TOGGLE & DRAWER ── */
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #111;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-nav-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1099;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-nav-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 290px;
+      height: 100vh;
+      background: #FFFFFF;
+      z-index: 1100;
+      transform: translateX(-100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 24px 20px;
+      box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-nav-drawer.open {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #EBEBEB;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .mobile-nav-link {
+      color: #111;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 8px 0;
+      transition: color 0.2s;
+    }
+
+    .mobile-nav-link:hover,
+    .mobile-nav-link.active {
+      color: #E85038;
+    }
+
+    /* ── PRODUCT PAGE LAYOUT ── */
+    .product-page-main {
+      max-width: 1280px;
+      margin: 50px auto 100px;
+      padding: 0 30px;
+      width: 100%;
+      box-sizing: border-box;
+      flex: 1;
+    }
+
+    .product-page-top-bar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      background: #FFFFFF;
+      border: 1.5px solid #E5E5E8;
+      border-radius: 30px;
+      color: #111111;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .back-btn:hover {
+      background: #111111;
+      color: #FFFFFF;
+      border-color: #111111;
+      transform: translateX(-4px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .back-btn svg {
+      transition: transform 0.25s ease;
+    }
+
+    .back-btn:hover svg {
+      transform: translateX(-3px);
+    }
+
+    .product-details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .product-gallery {
+      position: sticky;
+      top: 110px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .product-main-media {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #F8F8FA;
+      border: 2px solid #E85038;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(232, 80, 56, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .product-main-media img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border-radius: 18px;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.08));
+      transition: opacity 0.2s ease, transform 0.3s ease;
+    }
+
+    .product-thumbnails {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 4px 0;
+    }
+
+    .thumb-img {
+      width: 68px;
+      height: 68px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #EBEBEB;
+      cursor: pointer;
+      background: #F8F8FA;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .thumb-img:hover,
+    .thumb-img.active {
+      border-color: #E85038;
+      box-shadow: 0 4px 12px rgba(232, 80, 56, 0.25);
+    }
+
+    .product-badge-pill {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #111111;
+      color: #FFF;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* ── INFO PANEL ── */
+    .product-info-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .product-category-sub {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #E85038;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .product-title-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    .product-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 3.5vw, 42px);
+      margin: 0;
+      line-height: 1.22;
+      color: #111111;
+      transition: all 0.25s ease;
+    }
+
+    .product-hero-title.clamped {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .title-read-more-btn {
+      background: none;
+      border: none;
+      color: #E85038;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      padding: 2px 0;
+      display: none;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .title-read-more-btn:hover {
+      color: #D93829;
+      text-decoration: underline;
+    }
+
+    .product-hero-price {
+      font-family: 'Inter', sans-serif;
+      font-size: 32px;
+      color: #E85038;
+      font-weight: 800;
+    }
+
+    .product-desc-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .product-hero-desc {
+      font-size: 15px;
+      line-height: 1.65;
+      color: #555555;
+      font-weight: 400;
+      margin: 0;
+      transition: all 0.25s ease;
+    }
+
+    .product-hero-desc.clamped {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .desc-read-more-btn {
+      background: none;
+      border: none;
+      color: #E85038;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      padding: 2px 0;
+      display: none;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .desc-read-more-btn:hover {
+      color: #D93829;
+      text-decoration: underline;
+    }
+
+    /* ── OLFACTORY NOTES BOX — orange tint ── */
+    .olfactory-pyramid {
+      background: #FFF8F6;
+      border: 1.5px solid #F4C4B8;
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pyramid-header {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #E85038;
+      font-weight: 700;
+    }
+
+    .accord-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #F0E8E6;
+      padding-bottom: 8px;
+      font-size: 13.5px;
+    }
+
+    .accord-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .accord-label {
+      color: #888888;
+      font-weight: 500;
+    }
+
+    .accord-value {
+      color: #111111;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* ── SIZE SELECTOR ── */
+    .size-selector-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .size-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #777777;
+      font-weight: 600;
+    }
+
+    .size-options {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .size-btn {
+      padding: 12px 20px;
+      background: #FFFFFF;
+      border: 1.5px solid #DCDCDC;
+      color: #222222;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.22s;
+    }
+
+    .size-btn.active,
+    .size-btn:hover {
+      background: #E85038;
+      border-color: #E85038;
+      color: #FFF;
+    }
+
+    /* ── ACTION BUTTONS ── */
+    .cta-button-group {
+      display: flex;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .btn-action-add {
+      flex: 1;
+      padding: 16px;
+      background: #E85038;
+      color: #FFF;
+      border: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.25s;
+      font-size: 13.5px;
+    }
+
+    .btn-action-add:hover {
+      background: #D93829;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(232, 80, 56, 0.3);
+    }
+
+    .btn-action-buy {
+      flex: 1;
+      padding: 16px;
+      background: #111111;
+      color: #FFF;
+      border: 1.5px solid #111111;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.25s;
+      font-size: 13.5px;
+    }
+
+    .btn-action-buy:hover {
+      background: #333333;
+      border-color: #333333;
+    }
+
+    /* ── TRUST BADGES ── */
+    .trust-badges-row {
+      display: flex;
+      gap: 20px;
+      margin-top: 16px;
+      padding-top: 20px;
+      border-top: 1px solid #EBEBEB;
+      flex-wrap: wrap;
+    }
+
+    .trust-badge-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12.5px;
+      color: #666666;
+    }
+
+    .trust-badge-item svg {
+      color: #E85038;
+    }
+
+    /* ── CART DRAWER ── */
+    .custom-cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 400px;
+      max-width: 92vw;
+      height: 100%;
+      height: 100dvh;
+      box-sizing: border-box;
+      background: #FFFFFF;
+      border-left: 1px solid #EBEBEB;
+      box-shadow: -20px 0 60px rgba(0, 0, 0, 0.12);
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .custom-cart-drawer.open {
+      transform: translateX(0);
+    }
+
+    .cart-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .cart-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #EBEBEB;
+      flex-shrink: 0;
+    }
+
+    .drawer-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      color: #555;
+      font-size: 26px;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    .drawer-close:hover {
+      opacity: 1;
+      color: #E85038;
+    }
+
+    .drawer-items {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 12px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    .drawer-empty {
+      text-align: center;
+      color: #999;
+      padding: 24px 0;
+      font-size: 14.5px;
+    }
+
+    .cart-item-row {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      background: #F8F8FA;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #EBEBEB;
+    }
+
+    .cart-item-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-name {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 4px;
+    }
+
+    .cart-item-price {
+      font-size: 13.5px;
+      color: #E85038;
+      font-weight: 700;
+    }
+
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: #999;
+      cursor: pointer;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .cart-item-remove:hover {
+      color: #E85038;
+      background: rgba(232, 80, 56, 0.1);
+    }
+
+    .drawer-footer {
+      border-top: 1px solid #EBEBEB;
+      padding-top: 14px;
+      padding-bottom: 2px;
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-shrink: 0;
+      background: #FFFFFF;
+    }
+
+    .drawer-subtotal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .drawer-checkout-btn {
+      width: 100%;
+      padding: 13px 16px;
+      background: #E85038;
+      color: #FFF;
+      border: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background 0.2s, transform 0.2s;
+      font-size: 13.5px;
+      box-shadow: 0 4px 14px rgba(232, 80, 56, 0.25);
+    }
+
+    .drawer-checkout-btn:hover {
+      background: #D93829;
+      transform: translateY(-1px);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .product-details-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .product-page-main {
+        padding: 0 16px;
+        margin: 30px auto 60px;
+      }
+
+      .product-gallery {
+        position: static;
+      }
+
+      .nav-container {
+        padding: 16px 20px;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .cta-button-group {
+        flex-direction: column;
+      }
+
+      .mobile-nav-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none !important;
+      }
+    }
+  </style>
+  <script type="module" src="js/shopify.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+</head>
+
+<body>
+  <!-- Top Promo Marquee Banner -->
+  <div class="promo-marquee-bar">
+    <div class="promo-marquee-track">
+      <div class="promo-marquee-content">
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+      </div>
+      <div class="promo-marquee-content" aria-hidden="true">
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+        <span>Free Shipping All Over INDIA</span>
+        <span class="promo-separator">|</span>
+        <span>FLAT 20%+ OFF Sale Going On</span>
+        <span class="promo-separator">|</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" onclick="toggleMobileNav(true)"
+        aria-label="Open Navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="index.html" class="logo">Aroma Qasr</a>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="collections.html" class="nav-link active">Shop</a>
+      <a href="about.html" class="nav-link">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="cart-trigger-btn" onclick="openCart()" aria-label="Open Shopping Bag">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="cart-badge" id="nav-cart-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" onclick="toggleMobileNav(false)"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div class="mobile-nav-header">
+      <span class="logo" style="font-size: 24px;">Aroma Qasr</span>
+      <button onclick="toggleMobileNav(false)"
+        style="background:none; border:none; color:#111; font-size:26px; cursor:pointer;">&times;</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="collections.html" class="mobile-nav-link">Shop Fragrances</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+    </div>
+  </aside>
+
+  <!-- Main Product View -->
+  <main class="product-page-main">
+    <!-- Back Button -->
+    <div class="product-page-top-bar">
+      <button onclick="goBack()" class="back-btn" id="product-back-btn" aria-label="Go back to previous page">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Back to Fragrances</span>
+      </button>
+    </div>
+
+    <div class="product-details-grid" id="product-view-container">
+      <!-- Media Column -->
+      <div class="product-gallery">
+        <div class="product-main-media">
+          <span class="product-badge-pill" id="product-badge">Live Store</span>
+          <img id="product-image" src="images/Vani.png" alt="Fragrance Flacon">
+        </div>
+        <div class="product-thumbnails" id="product-thumbnails"></div>
+      </div>
+
+      <!-- Info Column -->
+      <div class="product-info-panel">
+        <div class="product-title-wrap">
+          <span class="product-category-sub" id="product-category">EAU DE PARFUM (OFFICIAL)</span>
+          <h1 class="product-hero-title clamped" id="product-title">VÒKKA Thai Aqua Luxury Unisex Perfume</h1>
+          <button class="title-read-more-btn" id="title-toggle-btn" onclick="toggleTitle()">... Read more</button>
+        </div>
+
+        <div class="product-hero-price" id="product-price">₹1,299</div>
+
+        <div class="product-desc-container">
+          <p class="product-hero-desc clamped" id="product-description">
+            Make every moment memorable with Vokkaa Thai Aqua Luxury Perfume, a refreshing unisex fragrance designed for
+            everyday elegance. Its clean aquatic top notes combine seamlessly with hints of citrus and oceanic sea
+            breeze, drying down into smooth ambergris and smoked cedar.
+          </p>
+          <button class="desc-read-more-btn" id="desc-toggle-btn" onclick="toggleDescription()">... Read more</button>
+        </div>
+
+        <!-- Olfactory Pyramid -->
+        <div class="olfactory-pyramid">
+          <div class="pyramid-header">Olfactive Architecture</div>
+          <div class="accord-row">
+            <span class="accord-label">Top Notes</span>
+            <span class="accord-value" id="notes-top">Calabrian Bergamot, Oceanic Breeze, Pink Pepper</span>
+          </div>
+          <div class="accord-row">
+            <span class="accord-label">Heart Notes</span>
+            <span class="accord-value" id="notes-heart">Marine Lotus, Damask Rose, Exotic Botanicals</span>
+          </div>
+          <div class="accord-row">
+            <span class="accord-label">Base Notes</span>
+            <span class="accord-value" id="notes-base">Smoked Cedar, Ambergris, Precious Musk</span>
+          </div>
+        </div>
+
+        <!-- Flacon Size Selection -->
+        <div class="size-selector-wrap" id="size-selector-wrap">
+          <span class="size-label" id="size-label-heading">Flacon Volume</span>
+          <div class="size-options" id="size-options-container">
+            <!-- Dynamically populated based on product volume -->
+          </div>
+        </div>
+
+        <!-- Action CTA Buttons -->
+        <div class="cta-button-group">
+          <button class="btn-action-add" onclick="handleAddToCartClick()">Add to Shopping Bag</button>
+          <button class="btn-action-buy" onclick="handleBuyNowClick()">Purchase Instantly &rarr;</button>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="trust-badges-row">
+          <div class="trust-badge-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            Complimentary Express Shipping
+          </div>
+          <div class="trust-badge-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+            </svg>
+            Free Scent Samples Included
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related / Other Products Section -->
+    <section class="related-products-section" style="margin-top: 90px; width: 100%;">
+      <div class="section-header" style="text-align: center; margin-bottom: 36px; padding: 0;">
+        <span class="section-label">CURATED CREATIONS</span>
+        <h2 class="section-headline" style="font-size: clamp(28px, 4vw, 40px); margin-bottom: 8px;">You May Also Like
+        </h2>
+        <p class="section-description" style="max-width: 600px; margin: 0 auto; font-size: 15px;">Discover complementing
+          olfactory compositions formulated with rare essences.</p>
+      </div>
+
+      <div class="products-grid" id="related-products-grid">
+        <!-- Dynamically rendered live shopify products -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Animated Wave Footer -->
+  <footer class="animated-wave-footer">
+    <!-- Moving Wave Background -->
+    <div class="wave-background-wrap">
+      <div class="wave-track">
+        <svg viewBox="0 0 1800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 0 250 C 300 150, 600 350, 900 250 C 1200 150, 1500 350, 1800 250 L 1800 500 L 0 500 Z"
+            fill="rgba(232, 80, 56, 0.05)" />
+          <path d="M 0 280 C 300 350, 600 210, 900 280 C 1200 350, 1500 210, 1800 280 L 1800 500 L 0 500 Z"
+            fill="rgba(232, 80, 56, 0.10)" />
+        </svg>
+        <svg viewBox="0 0 1800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 0 250 C 300 150, 600 350, 900 250 C 1200 150, 1500 350, 1800 250 L 1800 500 L 0 500 Z"
+            fill="rgba(232, 80, 56, 0.05)" />
+          <path d="M 0 280 C 300 350, 600 210, 900 280 C 1200 350, 1500 210, 1800 280 L 1800 500 L 0 500 Z"
+            fill="rgba(232, 80, 56, 0.10)" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- 1. Stay Connected -->
+        <div>
+          <h2 class="footer-heading">Stay Connected</h2>
+          <form class="footer-form"
+            onsubmit="event.preventDefault(); alert('Thank you for subscribing to Aroma Qasr!');">
+            <div class="footer-form-group">
+              <label class="footer-label" for="footer-email">Email</label>
+              <input id="footer-email" class="footer-input" placeholder="Enter your email" type="email" required />
+            </div>
+            <button type="submit" class="footer-btn-subscribe">Subscribe</button>
+          </form>
+        </div>
+
+        <!-- 2. Quick Links -->
+        <div>
+          <h3 class="footer-subheading">Quick Links</h3>
+          <nav class="footer-links-nav">
+            <a href="index.html" class="footer-nav-link">Home</a>
+            <a href="collections.html" class="footer-nav-link">Shop Fragrances</a>
+            <a href="about.html" class="footer-nav-link">About</a>
+            <a href="collections.html?category=men" class="footer-nav-link">Men's Repertoire</a>
+            <a href="collections.html?category=women" class="footer-nav-link">Women's Repertoire</a>
+          </nav>
+        </div>
+
+        <!-- 3. Contact Us -->
+        <div>
+          <h3 class="footer-subheading">Contact Us</h3>
+          <address class="footer-address">
+            <p style="margin:0;">Aroma Qasr Fragrance House</p>
+            <p style="margin:0;">Mumbai, India</p>
+            <p style="margin:0;">Phone: <a href="tel:+919876543210">+91 9137961830</a></p>
+            <p style="margin:0;">Email: <a href="mailto:ContactAromaQasr@gmail.com">ContactAromaQasr@gmail.com</a></p>
+          </address>
+        </div>
+
+        <!-- 4. Follow Us -->
+        <div>
+          <h3 class="footer-subheading">Follow Us</h3>
+          <div class="footer-social-row">
+            <a href="#" class="footer-social-btn" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z">
+                </path>
+                <circle cx="12" cy="13" r="3"></circle>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p class="footer-copyright">© 2026 Aroma Qasr Perfumes. All rights reserved.</p>
+        <div class="footer-payment-badges">
+          <span>VISA</span>
+          <span>MASTERCARD</span>
+          <span>UPI</span>
+          <span>AMEX</span>
+        </div>
+      </div>
+      <div class="footer-brand-title">Aroma Qasr</div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WIDGETS -->
+  <button class="floating-scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Cart Drawer -->
+  <div class="cart-backdrop" id="cart-backdrop" onclick="closeCart()"></div>
+  <aside class="custom-cart-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Shopping Bag</h3>
+      <button class="drawer-close" onclick="closeCart()">&times;</button>
+    </div>
+    <div class="drawer-items" id="cart-items-container">
+      <div class="drawer-empty">Your shopping bag is empty.</div>
+    </div>
+    <div class="drawer-footer">
+      <div class="drawer-subtotal">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">₹0</span>
+      </div>
+      <button class="drawer-checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <script>
+    window.toggleMobileNav = function (open) {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const backdrop = document.getElementById('mobile-nav-backdrop');
+      if (open) {
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+      } else {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('open');
+      }
+    };
+
+    window.goBack = function () {
+      if (document.referrer && (document.referrer.includes('collections.html') || document.referrer.includes('index.html') || document.referrer.includes(window.location.host))) {
+        window.history.back();
+      } else {
+        window.location.href = 'collections.html';
+      }
+    };
+
+    // Live Shopify Products Catalog (Synced with Storefront API)
+    const catalog = {
+      'vokkaa-thai-aqua-luxury-unisex-perfume-fresh-aquatic-fragrance': {
+        handle: 'vokkaa-thai-aqua-luxury-unisex-perfume-fresh-aquatic-fragrance',
+        name: "VÒKKA Thai Aqua Luxury Unisex Perfume",
+        badge: "Official Luxury",
+        category: "EAU DE PARFUM (OFFICIAL)",
+        price: 1299,
+        image: "images/Vani.png",
+        description: "Make every moment memorable with Vokkaa Thai Aqua Luxury Perfume, a refreshing unisex fragrance designed for everyday elegance. Its clean aquatic top notes combine seamlessly with hints of citrus and oceanic sea breeze, drying down into smooth ambergris and smoked cedar.",
+        top: "Calabrian Bergamot, Oceanic Breeze, Pink Pepper",
+        heart: "Marine Lotus, Damask Rose, Exotic Botanicals",
+        base: "Smoked Cedar, Ambergris, Precious Musk"
+      },
+      'vokka-eternal-luxury-long-lasting-unisex-perfume-20ml': {
+        handle: 'vokka-eternal-luxury-long-lasting-unisex-perfume-20ml',
+        name: "VÒKKA Eternal Luxury Long-Lasting Unisex Perfume (20ml)",
+        badge: "Pocket EDP",
+        category: "POCKET EAU DE PARFUM (20ML)",
+        price: 249,
+        image: "images/Vökka Thai Oud and Aqua.png",
+        description: "Pocket-sized luxury flacon offering intense all-day skin sillage. Infused with natural essential oils, warm spices, and sensual smoked woods for memorable trail.",
+        top: "Warm Spices, Italian Bergamot",
+        heart: "Smoked Woods, Ambergris, Clove",
+        base: "Cedarwood, Tonka Bean, Earthy Musk"
+      },
+      'vokka-pure-luxury-long-lasting-unisex-perfume-20ml-eau-de-parfum-perfume-for-man-woman-premium-fragrance-pocket-perfumes-gifts-for-him-her-fresh-fruity-vanilla-notes': {
+        handle: 'vokka-pure-luxury-long-lasting-unisex-perfume-20ml-eau-de-parfum-perfume-for-man-woman-premium-fragrance-pocket-perfumes-gifts-for-him-her-fresh-fruity-vanilla-notes',
+        name: "VÒKKA Pure Luxury Pocket Perfume (20ml) | Fresh Vanilla",
+        badge: "Bestseller",
+        category: "POCKET EAU DE PARFUM (20ML)",
+        price: 229,
+        image: "images/gold-perfume.png",
+        description: "An intoxicating blend of sweet vanilla orchid, juicy white peach, and golden amber. Perfectly pocket-sized for on-the-go touch-ups anytime.",
+        top: "Dewy Peach, Sweet Vanilla Orchid, Mandarin",
+        heart: "Tunisian Neroli, Ceylon Cinnamon, Tonka",
+        base: "Ambroxan, White Musk, Bourbon Vanilla"
+      },
+      'vokka-desert-oud-arabian-stories-pack-of-2-x-100ml-arabic-unisex-luxury-long-lasting-fruity-woody-perfume-gift-set-for-men-and-women-spicy-scent-eau-de-parfum': {
+        handle: 'vokka-desert-oud-arabian-stories-pack-of-2-x-100ml-arabic-unisex-luxury-long-lasting-fruity-woody-perfume-gift-set-for-men-and-women-spicy-scent-eau-de-parfum',
+        name: "VÒKKA Desert Oud & Arabian Stories (2 x 100ml)",
+        badge: "Gift Set",
+        category: "LUXURY GIFT SET (2 x 100ML)",
+        price: 1199,
+        image: "images/Vani.png",
+        description: "Opulent Arabian duo featuring pure smoked Oud combined with lush fruity florality. An artisanal masterpiece designed for evening soirées and grand celebrations.",
+        top: "Saffron Threads, Bergamot, Pink Pepper",
+        heart: "Arabian Rose, Smoked Incense, Nutmeg",
+        base: "Rare Agarwood (Oud), Amber, Dark Patchouli"
+      },
+      'luxury-unisex-perfume-combo-vaniqu-godfather-cupids-cologne-premium-woody-romantic-fragrance-daily-wear-date-night-110ml': {
+        handle: 'luxury-unisex-perfume-combo-vaniqu-godfather-cupids-cologne-premium-woody-romantic-fragrance-daily-wear-date-night-110ml',
+        name: "Luxury Unisex Perfume Combo (Vaniqu & Godfather - 110ml)",
+        badge: "Signature Combo",
+        category: "LUXURY COMBO PACK (110ML)",
+        price: 899,
+        image: "images/cupinos.png",
+        description: "The ultimate trio for daily wear and date nights. Bold woody accords balanced with seductive spicy vanilla notes for unforgettable presence.",
+        top: "Spiced Cardamom, Citrus Zest, Rum",
+        heart: "Tobacco Leaf, Roasted Vanilla, Leather",
+        base: "Sandalwood, Amber Resin, Dark Musk"
+      },
+      'arabian-aroma-old-money-aqua-seduction-ice-unisex-perfume-combo-2-x-50ml-edp': {
+        handle: 'arabian-aroma-old-money-aqua-seduction-ice-unisex-perfume-combo-2-x-50ml-edp',
+        name: "Old Money & Aqua Seduction Ice Combo (2 x 50ml EDP)",
+        badge: "Collector's Duo",
+        category: "LUXURY DUO SET (2 x 50ML)",
+        price: 1299,
+        image: "images/Vökka Thai Oud and Aqua.png",
+        description: "Crisp, aristocratic freshness meeting icy oceanic currents. Distinctive Italian bergamot, aquatic accords, and precious mineral moss.",
+        top: "Icy Mint, Crisp Green Apple, Bergamot",
+        heart: "Oceanic Lotus, Mineral Salicylate, Clary Sage",
+        base: "Sun-bleached Driftwood, White Amber, Oakmoss"
+      }
+    };
+
+    const defaultHandle = 'vokkaa-thai-aqua-luxury-unisex-perfume-fresh-aquatic-fragrance';
+    const handle = new URLSearchParams(window.location.search).get('handle') || defaultHandle;
+    let currentProduct = catalog[handle] || Object.values(catalog).find(p => p.handle === handle) || catalog[defaultHandle];
+    let selectedMultiplier = 1;
+    let selectedSizeLabel = '50ml';
+
+    function updateDescriptionToggle() {
+      const descEl = document.getElementById('product-description');
+      const btn = document.getElementById('desc-toggle-btn');
+      if (!descEl || !btn) return;
+
+      descEl.classList.add('clamped');
+      btn.textContent = '... Read more';
+
+      setTimeout(() => {
+        const text = descEl.textContent.trim();
+        if (text.length > 110 || descEl.scrollHeight > descEl.clientHeight + 4) {
+          btn.style.display = 'inline-flex';
+        } else {
+          btn.style.display = 'none';
+        }
+      }, 50);
+    }
+
+    window.toggleDescription = function () {
+      const descEl = document.getElementById('product-description');
+      const btn = document.getElementById('desc-toggle-btn');
+      if (!descEl || !btn) return;
+      const isClamped = descEl.classList.toggle('clamped');
+      btn.textContent = isClamped ? '... Read more' : 'Show less';
+    };
+
+    function renderThumbnails(images) {
+      const container = document.getElementById('product-thumbnails');
+      if (!container) return;
+      if (!images || images.length <= 1) {
+        container.innerHTML = '';
+        container.style.display = 'none';
+        return;
+      }
+      container.style.display = 'flex';
+      container.innerHTML = images.map((imgUrl, i) => `
+        <img src="${imgUrl}" alt="Thumbnail ${i + 1}" class="thumb-img ${i === 0 ? 'active' : ''}" onclick="switchProductImage('${imgUrl}', this)">
+      `).join('');
+    }
+
+    window.switchProductImage = function (imgUrl, el) {
+      const mainImg = document.getElementById('product-image');
+      if (mainImg) {
+        mainImg.style.opacity = '0.4';
+        setTimeout(() => {
+          mainImg.src = imgUrl;
+          mainImg.style.opacity = '1';
+        }, 150);
+      }
+      document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
+      if (el) el.classList.add('active');
+    };
+
+    // Helper to automatically detect volume from product title / description / handle
+    function detectProductVolume(product) {
+      const text = `${product.title || product.name || ''} ${product.handle || ''} ${product.description || ''}`.toLowerCase();
+
+      // Thai Aqua - standalone flacon with no volume selector
+      if (text.includes('thai-aqua') || (text.includes('thai') && text.includes('aqua'))) {
+        return { display: '', label: '', sizes: [] };
+      }
+
+      // 1. Pack of 2 x 100ml / 2 x 100 ml
+      if (text.match(/2\s*[xX*]\s*100\s*ml/i) || text.match(/100ml.*(?:pack|set)\s*of\s*2/i)) {
+        return { display: '2 x 100ml', label: '100ml each (Pack of 2)', sizes: ['2 x 100ml (100ml each)'] };
+      }
+
+      // 2. 2 x 50ml / 2 x 50 ml
+      if (text.match(/2\s*[xX*]\s*50\s*ml/i) || text.match(/50ml.*(?:pack|combo|set)\s*of\s*2/i) || text.match(/combo.*2\s*[xX*]\s*50/i)) {
+        return { display: '2 x 50ml', label: '50ml each (Duo Set)', sizes: ['2 x 50ml (50ml each)'] };
+      }
+
+      // 3. Generic N x Y ml
+      const matchNxY = text.match(/(\d+)\s*[xX*]\s*(\d+)\s*ml/i);
+      if (matchNxY) {
+        return {
+          display: `${matchNxY[1]} x ${matchNxY[2]}ml`,
+          label: `${matchNxY[2]}ml each (Pack of ${matchNxY[1]})`,
+          sizes: [`${matchNxY[1]} x ${matchNxY[2]}ml (${matchNxY[2]}ml each)`]
+        };
+      }
+
+      // 4. 20ml Pocket Perfume
+      if (text.match(/20\s*ml/i) || text.match(/pocket/i)) {
+        return { display: '20 ml', label: '20ml Pocket Flacon', sizes: ['20 ml (Pocket Flacon)'] };
+      }
+
+      // 5. 110ml Combo
+      if (text.match(/110\s*ml/i)) {
+        return { display: '110 ml', label: '110ml Flacon Set', sizes: ['110 ml (Combo Flacon)'] };
+      }
+
+      // 6. 100ml Flacon
+      if (text.match(/100\s*ml/i)) {
+        return { display: '100 ml', label: '100ml Luxury Flacon', sizes: ['100 ml'] };
+      }
+
+      // 7. 50ml Flacon
+      if (text.match(/50\s*ml/i)) {
+        return { display: '50 ml', label: '50ml Flacon', sizes: ['50 ml'] };
+      }
+
+      return { display: '', label: '', sizes: [] };
+    }
+
+    function updateVolumeSelector() {
+      const volInfo = detectProductVolume(currentProduct);
+      const wrap = document.getElementById('size-selector-wrap');
+      const container = document.getElementById('size-options-container');
+      const heading = document.getElementById('size-label-heading');
+
+      if (!volInfo || !volInfo.sizes || volInfo.sizes.length <= 1) {
+        if (wrap) wrap.style.display = 'none';
+        selectedSizeLabel = volInfo?.display || '100ml';
+        selectedMultiplier = 1;
+        return;
+      }
+
+      if (wrap) wrap.style.display = 'flex';
+      if (heading) {
+        heading.textContent = `Flacon Volume (${volInfo.display})`;
+      }
+      if (!container) return;
+
+      container.innerHTML = '';
+      volInfo.sizes.forEach((sizeText, idx) => {
+        const btn = document.createElement('button');
+        btn.className = `size-btn ${idx === 0 ? 'active' : ''}`;
+        btn.textContent = sizeText;
+        btn.onclick = () => {
+          document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedSizeLabel = sizeText;
+          updatePriceDisplay();
+        };
+        container.appendChild(btn);
+      });
+
+      selectedSizeLabel = volInfo.sizes[0];
+      selectedMultiplier = 1;
+    }
+
+    window.toggleTitle = function () {
+      const titleEl = document.getElementById('product-title');
+      const btn = document.getElementById('title-toggle-btn');
+      if (!titleEl || !btn) return;
+      const isClamped = titleEl.classList.contains('clamped');
+      if (isClamped) {
+        titleEl.classList.remove('clamped');
+        btn.textContent = 'Show less';
+      } else {
+        titleEl.classList.add('clamped');
+        btn.textContent = '... Read more';
+      }
+    };
+
+    function updateTitleToggle() {
+      const titleEl = document.getElementById('product-title');
+      const btn = document.getElementById('title-toggle-btn');
+      if (!titleEl || !btn) return;
+
+      titleEl.classList.add('clamped');
+      btn.textContent = '... Read more';
+
+      requestAnimationFrame(() => {
+        const isLong = (titleEl.textContent || '').trim().length > 65;
+        const isOverflow = titleEl.scrollHeight > (titleEl.clientHeight + 4);
+        if (isLong || isOverflow) {
+          btn.style.display = 'inline-flex';
+        } else {
+          btn.style.display = 'none';
+        }
+      });
+    }
+
+    window.toggleDescription = function () {
+      const descEl = document.getElementById('product-description');
+      const btn = document.getElementById('desc-toggle-btn');
+      if (!descEl || !btn) return;
+      const isClamped = descEl.classList.contains('clamped');
+      if (isClamped) {
+        descEl.classList.remove('clamped');
+        btn.textContent = 'Show less';
+      } else {
+        descEl.classList.add('clamped');
+        btn.textContent = '... Read more';
+      }
+    };
+
+    function updateDescriptionToggle() {
+      const descEl = document.getElementById('product-description');
+      const btn = document.getElementById('desc-toggle-btn');
+      if (!descEl || !btn) return;
+
+      descEl.classList.add('clamped');
+      btn.textContent = '... Read more';
+
+      requestAnimationFrame(() => {
+        const isLong = (descEl.textContent || '').trim().length > 175;
+        const isOverflow = descEl.scrollHeight > (descEl.clientHeight + 4);
+        if (isLong || isOverflow) {
+          btn.style.display = 'inline-flex';
+        } else {
+          btn.style.display = 'none';
+        }
+      });
+    }
+
+    function renderProduct() {
+      document.title = `${currentProduct.name} | Aroma Qasr`;
+      document.getElementById('product-title').textContent = currentProduct.name;
+      document.getElementById('product-badge').textContent = currentProduct.badge;
+      document.getElementById('product-category').textContent = currentProduct.category;
+      document.getElementById('product-description').textContent = currentProduct.description;
+      document.getElementById('product-image').src = currentProduct.image;
+      document.getElementById('product-image').alt = currentProduct.name;
+      document.getElementById('notes-top').textContent = currentProduct.top || 'Calabrian Bergamot, Oceanic Breeze, Pink Pepper';
+      document.getElementById('notes-heart').textContent = currentProduct.heart || 'Marine Lotus, Damask Rose, Exotic Botanicals';
+      document.getElementById('notes-base').textContent = currentProduct.base || 'Smoked Cedar, Ambergris, Precious Musk';
+      if (currentProduct.images) {
+        renderThumbnails(currentProduct.images);
+      }
+      updateVolumeSelector();
+      updatePriceDisplay();
+      updateTitleToggle();
+      updateDescriptionToggle();
+    }
+
+    // Check if this product exists live on Shopify
+    async function checkLiveShopifyProduct() {
+      try {
+        if (!window.fetchLiveShopifyProducts) return;
+        const liveProducts = await window.fetchLiveShopifyProducts();
+        if (!liveProducts || liveProducts.length === 0) return;
+
+        const currentHandleNorm = handle.toLowerCase();
+        const found = liveProducts.find(p => {
+          const pH = p.handle.toLowerCase();
+          return pH === currentHandleNorm || pH.includes(currentHandleNorm) || currentHandleNorm.includes(pH);
+        });
+
+        if (found) {
+          currentProduct = {
+            handle: found.handle,
+            name: found.title,
+            badge: "Live from Store",
+            category: "EAU DE PARFUM (OFFICIAL)",
+            price: found.price,
+            image: found.image,
+            images: found.images && found.images.length > 0 ? found.images : [found.image],
+            description: found.description || currentProduct.description || "Official luxury fragrance from our house collection.",
+            top: currentProduct.top || "Calabrian Bergamot, Oceanic Breeze, Pink Pepper",
+            heart: currentProduct.heart || "Damask Rose, Exotic Botanicals",
+            base: currentProduct.base || "Smoked Cedar, Ambergris, Precious Musk",
+            variantId: found.variantId,
+            numericVariantId: found.numericVariantId
+          };
+          renderProduct();
+        }
+      } catch (err) {
+        console.warn('Error checking live product:', err);
+      }
+    }
+
+    function updatePriceDisplay() {
+      const finalPrice = Math.round(currentProduct.price * selectedMultiplier);
+      document.getElementById('product-price').textContent = `₹${finalPrice.toLocaleString('en-IN')}`;
+    }
+
+    window.selectSize = function (sizeLabel, multiplier) {
+      selectedMultiplier = multiplier;
+      selectedSizeLabel = sizeLabel;
+      document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.includes(sizeLabel));
+      });
+      updatePriceDisplay();
+    };
+
+    // Cart Management
+    let cartItems = JSON.parse(localStorage.getItem('Aroma Qasr_cart') || localStorage.getItem('aroma_qasr_cart') || localStorage.getItem('rajs_cart') || '[]');
+
+    function updateCartUI() {
+      const countBadge = document.getElementById('nav-cart-count');
+      const container = document.getElementById('cart-items-container');
+      const subtotalEl = document.getElementById('cart-subtotal');
+
+      countBadge.textContent = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+      if (cartItems.length === 0) {
+        container.innerHTML = '<div class="drawer-empty">Your shopping bag is empty.</div>';
+        subtotalEl.textContent = '₹0';
+        return;
+      }
+
+      let total = 0;
+      container.innerHTML = cartItems.map((item, idx) => {
+        total += item.price * item.quantity;
+        return `
+          <div class="cart-item-row">
+            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+            <div class="cart-item-info">
+              <div class="cart-item-name">${item.name} (${item.size || '50ml'})</div>
+              <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')} &times; ${item.quantity}</div>
+            </div>
+            <button class="cart-item-remove" onclick="removeFromCart(${idx})" title="Remove item" aria-label="Remove item">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line>
+                <line x1="14" y1="11" x2="14" y2="17"></line>
+              </svg>
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      subtotalEl.textContent = '₹' + total.toLocaleString('en-IN');
+      localStorage.setItem('Aroma Qasr_cart', JSON.stringify(cartItems));
+      localStorage.setItem('aroma_qasr_cart', JSON.stringify(cartItems));
+    }
+
+    window.openCart = function () {
+      document.getElementById('cart-drawer').classList.add('open');
+      document.getElementById('cart-backdrop').classList.add('open');
+    };
+
+    window.closeCart = function () {
+      document.getElementById('cart-drawer').classList.remove('open');
+      document.getElementById('cart-backdrop').classList.remove('open');
+    };
+
+    window.handleAddToCartClick = function () {
+      if (window.requireAuth && !window.requireAuth(() => {
+        window.handleAddToCartClick();
+      }, 'add luxury fragrances to your shopping bag')) {
+        return;
+      }
+      const finalPrice = Math.round(currentProduct.price * selectedMultiplier);
+      const itemTitle = `${currentProduct.name} - ${selectedSizeLabel}`;
+
+      const existing = cartItems.find(i => i.name === itemTitle);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cartItems.push({
+          name: itemTitle,
+          price: finalPrice,
+          image: currentProduct.image,
+          size: selectedSizeLabel,
+          variantId: currentProduct.variantId || '',
+          numericVariantId: currentProduct.numericVariantId || '',
+          quantity: 1
+        });
+      }
+      updateCartUI();
+      openCart();
+    };
+
+    window.handleBuyNowClick = async function () {
+      if (window.requireAuth && !window.requireAuth(() => {
+        window.handleBuyNowClick();
+      }, 'buy this luxury fragrance')) {
+        return;
+      }
+      handleAddToCartClick();
+      proceedToCheckout();
+    };
+
+    window.removeFromCart = function (index) {
+      cartItems.splice(index, 1);
+      updateCartUI();
+    };
+
+    window.proceedToCheckout = async function () {
+      if (cartItems.length === 0) {
+        alert('Your bag is empty.');
+        return;
+      }
+      if (window.requireAuth && !window.requireAuth(() => {
+        window.proceedToCheckout();
+      }, 'proceed to checkout')) {
+        return;
+      }
+      try {
+        localStorage.setItem('aroma_last_order_items', JSON.stringify(cartItems));
+        localStorage.setItem('aroma_last_order_id', 'AQ-' + Math.floor(10000 + Math.random() * 90000));
+      } catch (e) { }
+
+      const checkoutBtn = document.querySelector('.drawer-checkout-btn');
+      if (checkoutBtn) {
+        checkoutBtn.textContent = 'Connecting to Checkout...';
+        checkoutBtn.disabled = true;
+      }
+      try {
+        if (window.createShopifyCheckout) {
+          const checkoutUrl = await window.createShopifyCheckout(cartItems);
+          if (checkoutUrl) {
+            window.location.href = checkoutUrl;
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('Direct checkout failed, redirecting to store cart:', err);
+      }
+      window.location.href = 'order-confirmation.html';
+    };
+
+    window.openConciergeChat = function () {
+      alert("Welcome to Aroma Qasr Fragrance Concierge! Connecting you with our master olfactory consultant on WhatsApp...");
+    };
+
+    window.addToCart = function (name, price, image, variantId = '', numericVariantId = '', size = '') {
+      if (window.requireAuth && !window.requireAuth(() => {
+        window.addToCart(name, price, image, variantId, numericVariantId, size);
+      }, 'add luxury fragrances to your shopping bag')) {
+        return;
+      }
+      const sizeLabel = size || '50ml';
+      const existing = cartItems.find(i => i.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cartItems.push({
+          name: name,
+          price: price,
+          image: image,
+          size: sizeLabel,
+          variantId: variantId || '',
+          numericVariantId: numericVariantId || '',
+          quantity: 1
+        });
+      }
+      updateCartUI();
+      openCart();
+    };
+
+    async function renderRelatedProducts() {
+      const grid = document.getElementById('related-products-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      let allItems = [];
+
+      // 1. Fetch live Shopify products
+      try {
+        if (window.fetchLiveShopifyProducts) {
+          const liveProducts = await window.fetchLiveShopifyProducts();
+          if (liveProducts && liveProducts.length > 0) {
+            liveProducts.forEach(p => {
+              allItems.push({
+                handle: p.handle,
+                name: p.title,
+                price: p.price,
+                image: p.image,
+                badge: "Live Store",
+                notes: "Eau De Parfum | Luxury Olfactory Blend",
+                variantId: p.variantId,
+                numericVariantId: p.numericVariantId
+              });
+            });
+          }
+        }
+      } catch (e) {
+        console.warn('Error fetching live products for recommendations:', e);
+      }
+
+      // If live products not yet fetched, populate from fallback catalog (all real store products)
+      if (allItems.length === 0) {
+        Object.keys(catalog).forEach(k => {
+          const item = catalog[k];
+          allItems.push({
+            handle: item.handle || k,
+            name: item.name,
+            price: item.price,
+            image: item.image,
+            badge: item.badge || "Unisex",
+            notes: "Eau De Parfum | Luxury Olfactory Blend",
+            variantId: '',
+            numericVariantId: ''
+          });
+        });
+      }
+
+      // Filter out the current product
+      const currentHandleLower = (currentProduct.handle || handle || '').toLowerCase();
+      const currentNameLower = (currentProduct.name || '').toLowerCase();
+      const otherProducts = allItems.filter(p => {
+        const pHandle = (p.handle || '').toLowerCase();
+        const pName = (p.name || '').toLowerCase();
+        return pHandle !== currentHandleLower &&
+          !currentHandleLower.includes(pHandle) &&
+          !pHandle.includes(currentHandleLower) &&
+          pName !== currentNameLower;
+      });
+
+      // Show up to 4 recommendations
+      function getRatingCount(key) {
+        let hash = 0;
+        const str = String(key || 'fragrance');
+        for (let i = 0; i < str.length; i++) {
+          hash = ((hash << 5) - hash) + str.charCodeAt(i);
+          hash |= 0;
+        }
+        return 54 + (Math.abs(hash) % 245);
+      }
+
+      productsToShow.forEach(prod => {
+        const volInfo = detectProductVolume(prod);
+        const reviews = getRatingCount(prod.handle || prod.name);
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <div class="product-card__image-wrapper">
+            <div class="product-card__badges">
+              <span class="badge-dark">${prod.badge || 'Unisex'}</span>
+              <span class="badge-dark" style="background:#E85038; color:#fff;">Official</span>
+            </div>
+            <a href="product.html?handle=${prod.handle}" class="product-card__image-link">
+              <img src="${prod.image}" alt="${prod.name}">
+            </a>
+            <button onclick="addToCart('${prod.name.replace(/'/g, "\\'")}', ${prod.price}, '${prod.image}', '${prod.variantId || ''}', '${prod.numericVariantId || ''}', '${volInfo.display}')" class="card-action-btn">ADD TO CART</button>
+          </div>
+          <div class="product-card__content">
+            <a href="product.html?handle=${prod.handle}" class="product-card__title">${prod.name}</a>
+            <div class="product-card__meta-row">
+              <div class="rating-stars">★★★★★ <span class="rating-count">(${reviews})</span></div>
+              <div class="size-badges">
+                <span class="size-pill">${volInfo.display}</span>
+              </div>
+            </div>
+            <div class="product-card__price-row">
+              <span class="price-current">₹${prod.price.toLocaleString('en-IN')}</span>
+              <span class="price-original">₹${(prod.price * 2.2).toFixed(0)}</span>
+            </div>
+            <div class="product-card__notes">${prod.notes}</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    renderProduct();
+    renderRelatedProducts();
+    updateCartUI();
+    document.addEventListener('DOMContentLoaded', () => {
+      checkLiveShopifyProduct().then(() => {
+        renderRelatedProducts();
+      });
+    });
+
+    const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  </script>
+  <script src="js/auth.js"></script>
+  <script src="js/loader.js"></script>
+</body>
+
+</html>

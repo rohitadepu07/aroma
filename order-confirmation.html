@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed | Aroma Qasr Luxury Fragrances</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/AQ-icon.png">
+  <link rel="shortcut icon" href="images/AQ-icon.png">
+  <link rel="apple-touch-icon" href="images/AQ-icon.png">
+  <meta name="description"
+    content="Thank you for your order with Aroma Qasr. Your luxury fragrance flacons are being handcrafted and prepared for express delivery across India.">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/hero-carousel.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #FAFAFB;
+      color: #111111;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Promo Banner */
+    .promo-banner-wrapper {
+      background: #E85038;
+      color: #FFFFFF;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 9px 0;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: flex;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      position: relative;
+      z-index: 101;
+    }
+
+    .promo-banner-track {
+      display: flex;
+      width: max-content;
+      animation: promoScroll 24s linear infinite;
+    }
+
+    .promo-banner-track span {
+      padding-right: 50px;
+      display: inline-block;
+    }
+
+    @keyframes promoScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Top Navbar */
+    .nav-container {
+      background: #FFFFFF;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1.5px solid #E85038;
+      border-top: none;
+      border-radius: 0 0 24px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(232, 80, 56, 0.06);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #111;
+      text-decoration: none;
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+    }
+
+    .nav-link {
+      color: #333;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.25s;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: #E85038;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cart-trigger-btn {
+      background: #F5F5F5;
+      border: 1px solid #E0E0E0;
+      color: #111;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .cart-trigger-btn:hover {
+      border-color: #E85038;
+      color: #E85038;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: #E85038;
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 700;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Main Container */
+    .confirmation-page-wrap {
+      max-width: 1080px;
+      margin: 40px auto 80px;
+      padding: 0 24px;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* Hero Card */
+    .confirmation-hero-card {
+      background: #FFFFFF;
+      border: 1px solid #EAEAEA;
+      border-radius: 20px;
+      padding: 44px 36px;
+      text-align: center;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .confirmation-hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #E85038 0%, #FFA07A 50%, #E85038 100%);
+    }
+
+    .success-icon-wrap {
+      width: 80px;
+      height: 80px;
+      background: rgba(232, 80, 56, 0.1);
+      border: 2px solid #E85038;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #E85038;
+      margin-bottom: 20px;
+      animation: popSuccess 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popSuccess {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .confirmation-badge {
+      display: inline-block;
+      background: rgba(232, 80, 56, 0.12);
+      color: #E85038;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .confirmation-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 12px;
+    }
+
+    .confirmation-subtitle {
+      color: #666666;
+      font-size: 15.5px;
+      max-width: 620px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    .order-meta-pill-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 18px;
+      border-top: 1px solid #F0F0F0;
+    }
+
+    .meta-pill {
+      background: #F8F8FA;
+      border: 1px solid #E8E8EC;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .meta-pill strong {
+      color: #111;
+      font-weight: 700;
+    }
+
+    .meta-pill span {
+      color: #666;
+    }
+
+    /* Timeline Stepper */
+    .timeline-card {
+      background: #FFFFFF;
+      border: 1px solid #EAEAEA;
+      border-radius: 18px;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .timeline-heading {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timeline-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+      gap: 12px;
+    }
+
+    .timeline-steps::before {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background: #EAEAEA;
+      z-index: 1;
+    }
+
+    .timeline-step {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .step-circle {
+      width: 38px;
+      height: 38px;
+      background: #FFFFFF;
+      border: 2px solid #D0D0D0;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #888;
+      transition: all 0.3s;
+    }
+
+    .timeline-step.completed .step-circle {
+      background: #E85038;
+      border-color: #E85038;
+      color: #FFF;
+      box-shadow: 0 0 0 4px rgba(232, 80, 56, 0.2);
+    }
+
+    .timeline-step.active .step-circle {
+      border-color: #E85038;
+      color: #E85038;
+      box-shadow: 0 0 0 4px rgba(232, 80, 56, 0.12);
+    }
+
+    .step-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 3px;
+    }
+
+    .step-desc {
+      font-size: 11.5px;
+      color: #888;
+    }
+
+    /* 2 Column Details Layout */
+    .confirmation-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* Left: Items Card */
+    .items-card {
+      background: #FFFFFF;
+      border: 1px solid #EAEAEA;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #F0F0F0;
+    }
+
+    .order-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .order-item-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      background: #FBFBFC;
+      border: 1px solid #EAEAEA;
+      padding: 14px;
+      border-radius: 12px;
+    }
+
+    .order-item-thumb {
+      width: 68px;
+      height: 68px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #FFF;
+      border: 1px solid #E0E0E0;
+    }
+
+    .order-item-meta {
+      flex: 1;
+    }
+
+    .order-item-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+
+    .order-item-submeta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #777;
+    }
+
+    .order-item-price {
+      font-weight: 700;
+      font-size: 15px;
+      color: #E85038;
+    }
+
+    /* Summary Calculation */
+    .summary-calc-box {
+      border-top: 1px dashed #E0E0E0;
+      padding-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14.5px;
+      color: #555;
+    }
+
+    .calc-row.total-row {
+      border-top: 1px solid #EAEAEA;
+      padding-top: 14px;
+      margin-top: 4px;
+      font-size: 18px;
+      font-weight: 800;
+      color: #111;
+    }
+
+    .calc-row.total-row .total-val {
+      color: #E85038;
+    }
+
+    /* Right: Shipping & Help */
+    .sidebar-card {
+      background: #FFFFFF;
+      border: 1px solid #EAEAEA;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      margin-bottom: 20px;
+    }
+
+    .sidebar-subheading {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .address-box {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #444;
+      background: #FBFBFC;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #EAEAEA;
+    }
+
+    .concierge-cta-box {
+      background: #FFF9F7;
+      border: 1px solid rgba(232, 80, 56, 0.2);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .concierge-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 6px;
+    }
+
+    .concierge-desc {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #25D366;
+      color: #FFF;
+      text-decoration: none;
+      padding: 11px 20px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 700;
+      width: 100%;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+      transition: all 0.2s;
+    }
+
+    .whatsapp-btn:hover {
+      background: #20BA5A;
+      transform: translateY(-1px);
+    }
+
+    /* Actions */
+    .primary-shop-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #E85038;
+      color: #FFF;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(232, 80, 56, 0.3);
+      transition: all 0.2s;
+      margin-bottom: 12px;
+    }
+
+    .primary-shop-btn:hover {
+      background: #D93829;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(232, 80, 56, 0.4);
+    }
+
+    .secondary-action-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #FFFFFF;
+      color: #333;
+      border: 1px solid #D0D0D0;
+      padding: 13px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .secondary-action-btn:hover {
+      border-color: #E85038;
+      color: #E85038;
+    }
+
+    @media (max-width: 900px) {
+      .nav-container {
+        padding: 16px 24px;
+      }
+
+      .confirmation-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-steps {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 20px;
+      }
+
+      .timeline-steps::before {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Promo Announcement Banner -->
+  <div class="promo-banner-wrapper">
+    <div class="promo-banner-track">
+      <span>Free Shipping All Over INDIA | FLAT 20%+ OFF Sale Going On | Free Shipping All Over INDIA | FLAT 20%+ OFF
+        Sale Going On | Free Shipping All Over INDIA | FLAT 20%+ OFF Sale Going On | Free Shipping All Over INDIA | FLAT
+        20%+ OFF Sale Going On |</span>
+      <span>Free Shipping All Over INDIA | FLAT 20%+ OFF Sale Going On | Free Shipping All Over INDIA | FLAT 20%+ OFF
+        Sale Going On | Free Shipping All Over INDIA | FLAT 20%+ OFF Sale Going On | Free Shipping All Over INDIA | FLAT
+        20%+ OFF Sale Going On |</span>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <nav class="nav-container" id="main-nav">
+    <a href="index.html" class="logo">Aroma Qasr</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="collections.html" class="nav-link">Shop</a>
+      <a href="about.html" class="nav-link">About</a>
+    </div>
+    <div class="nav-actions">
+      <button class="cart-trigger-btn" onclick="openCart()" aria-label="Open Shopping Bag">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="cart-badge" id="nav-cart-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Confirmation Content -->
+  <main class="confirmation-page-wrap">
+
+    <!-- 1. Hero Confirmation Card -->
+    <div class="confirmation-hero-card">
+      <div class="success-icon-wrap">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <div>
+        <span class="confirmation-badge">Payment Verified & Secured</span>
+        <h1 class="confirmation-title">Thank You, Your Order Is Confirmed!</h1>
+        <p class="confirmation-subtitle">
+          Your artisanal luxury fragrances are now being hand-inspected and sealed in our signature presentation flacon
+          packaging. An official order receipt and tracking link will be sent to your registered contact.
+        </p>
+      </div>
+
+      <!-- Meta Pill Row -->
+      <div class="order-meta-pill-row">
+        <div class="meta-pill">
+          <span>Order ID:</span>
+          <strong id="disp-order-id">#AQ-89421</strong>
+        </div>
+        <div class="meta-pill">
+          <span>Date:</span>
+          <strong id="disp-order-date">Today</strong>
+        </div>
+        <div class="meta-pill">
+          <span>Delivery:</span>
+          <strong>5–10 Business Days (Free Express)</strong>
+        </div>
+        <div class="meta-pill">
+          <span>Status:</span>
+          <strong style="color:#25D366;">Paid & Confirmed ✓</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Interactive Delivery Timeline -->
+    <div class="timeline-card">
+      <h3 class="timeline-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E85038" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        Live Order Progression
+      </h3>
+      <div class="timeline-steps">
+        <div class="timeline-step completed">
+          <div class="step-circle">✓</div>
+          <div class="step-title">Order Placed</div>
+          <div class="step-desc">Payment Confirmed</div>
+        </div>
+        <div class="timeline-step active">
+          <div class="step-circle">2</div>
+          <div class="step-title">Flacon Packaging</div>
+          <div class="step-desc">Quality & Atomizer Check</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-circle">3</div>
+          <div class="step-title">Dispatched</div>
+          <div class="step-desc">Blue Dart / Express Air</div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-circle">4</div>
+          <div class="step-title">Delivered</div>
+          <div class="step-desc">To Your Doorstep</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Two Column Details -->
+    <div class="confirmation-grid">
+
+      <!-- Left Column: Items & Summary -->
+      <div class="items-card">
+        <h2 class="card-title">Order Items Summary</h2>
+        <div class="order-items-list" id="confirmed-items-container">
+          <!-- Dynamically populated from placed order -->
+        </div>
+
+        <div class="summary-calc-box">
+          <div class="calc-row">
+            <span>Subtotal</span>
+            <span id="disp-subtotal">₹0</span>
+          </div>
+          <div class="calc-row">
+            <span>Express Shipping (All India)</span>
+            <span style="color:#25D366; font-weight:600;">FREE</span>
+          </div>
+          <div class="calc-row">
+            <span>Luxury Packaging & Fragrance Seal</span>
+            <span style="color:#25D366; font-weight:600;">Complimentary</span>
+          </div>
+          <div class="calc-row total-row">
+            <span>Total Amount Paid</span>
+            <span class="total-val" id="disp-total">₹0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Shipping & Support -->
+      <div>
+        <div class="sidebar-card">
+          <h3 class="sidebar-subheading">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            Shipping Destination
+          </h3>
+          <div class="address-box">
+            <p><strong>Aroma Qasr Valued Customer</strong></p>
+            <p>Express Home Delivery</p>
+            <p>Mumbai & All Metros, India</p>
+            <p style="margin-top: 6px; color:#777; font-size:12.5px;">Contact: +91 9137961830</p>
+          </div>
+        </div>
+
+        <div class="concierge-cta-box">
+          <div class="concierge-title">Have Questions About Your Delivery?</div>
+          <p class="concierge-desc">Our dedicated Fragrance Concierge is available 24/7 on WhatsApp for instant order
+            updates.</p>
+          <a href="https://wa.me/919137961830?text=Hi%20Aroma%20Qasr,%20I%20have%20an%20inquiry%20regarding%20my%20recent%20order."
+            target="_blank" class="whatsapp-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+            </svg>
+            Chat with Concierge
+          </a>
+        </div>
+
+        <a href="collections.html" class="primary-shop-btn">Continue Shopping</a>
+        <button onclick="window.print()" class="secondary-action-btn">Print / Save Invoice</button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Cart Drawer -->
+  <div class="cart-backdrop" id="cart-backdrop" onclick="closeCart()"></div>
+  <aside class="custom-cart-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Shopping Bag</h3>
+      <button class="drawer-close" onclick="closeCart()">&times;</button>
+    </div>
+    <div class="drawer-items" id="cart-items-container">
+      <div class="drawer-empty">Your shopping bag is empty.</div>
+    </div>
+    <div class="drawer-footer">
+      <div class="drawer-subtotal">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">₹0</span>
+      </div>
+      <button class="drawer-checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Animated Wave Footer -->
+  <footer class="animated-wave-footer">
+    <div class="wave-background-wrap">
+      <div class="wave-track">
+        <svg viewBox="0 0 1800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 0 250 C 300 150, 600 350, 900 250 C 1200 150, 1500 350, 1800 250 L 1800 500 L 0 500 Z"
+            fill="rgba(232, 80, 56, 0.05)" />
+          <path d="M 0 280 C 300 350, 600 210, 900 280 C 1200 350, 1500 210, 1800 280 L 1800 500 L 0 500 Z"
+            fill="rgba(232, 80, 56, 0.10)" />
+        </svg>
+        <svg viewBox="0 0 1800 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 0 250 C 300 150, 600 350, 900 250 C 1200 150, 1500 350, 1800 250 L 1800 500 L 0 500 Z"
+            fill="rgba(232, 80, 56, 0.05)" />
+          <path d="M 0 280 C 300 350, 600 210, 900 280 C 1200 350, 1500 210, 1800 280 L 1800 500 L 0 500 Z"
+            fill="rgba(232, 80, 56, 0.10)" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div>
+          <h2 class="footer-heading">Stay Connected</h2>
+          <form class="footer-form"
+            onsubmit="event.preventDefault(); alert('Thank you for subscribing to Aroma Qasr!');">
+            <div class="footer-form-group">
+              <label class="footer-label" for="footer-email">Email</label>
+              <input id="footer-email" class="footer-input" placeholder="Enter your email" type="email" required />
+            </div>
+            <button type="submit" class="footer-btn-subscribe">Subscribe</button>
+          </form>
+        </div>
+
+        <div>
+          <h3 class="footer-subheading">Quick Links</h3>
+          <nav class="footer-links-nav">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="collections.html" class="footer-link">The Collections</a>
+            <a href="about.html" class="footer-link">About & Story</a>
+          </nav>
+        </div>
+
+        <div>
+          <h3 class="footer-subheading">Customer Care</h3>
+          <nav class="footer-links-nav">
+            <a href="collections.html" class="footer-link">Shipping & Returns</a>
+            <a href="about.html" class="footer-link">Authenticity Guarantee</a>
+            <a href="mailto:ContactAromaQasr@gmail.com" class="footer-link">Contact Concierge</a>
+          </nav>
+        </div>
+
+        <div>
+          <h3 class="footer-subheading">Atelier</h3>
+          <address class="footer-address">
+            <p style="margin:0;">Aroma Qasr Fragrance House</p>
+            <p style="margin:0;">Mumbai, India</p>
+            <p style="margin:0;">Phone: <a href="tel:+919137961830">+91 9137961830</a></p>
+            <p style="margin:0;">Email: <a href="mailto:ContactAromaQasr@gmail.com">ContactAromaQasr@gmail.com</a></p>
+          </address>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 Aroma Qasr Luxury Perfumes. All Rights Reserved.</p>
+        <p class="footer-disclaimer">Independently crafted perfumes inspired by world-class olfactory traditions.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Load and render placed order
+    let cartItems = [];
+    try {
+      cartItems = JSON.parse(localStorage.getItem('aroma_qasr_cart')) || [];
+    } catch (e) { }
+
+    function renderConfirmedOrder() {
+      // Generate realistic order ID & Date
+      const params = new URLSearchParams(window.location.search);
+      const urlOrderId = params.get('order_id') || params.get('id');
+      const randomId = 'AQ-' + Math.floor(10000 + Math.random() * 90000);
+      const orderId = urlOrderId || localStorage.getItem('aroma_last_order_id') || randomId;
+      localStorage.setItem('aroma_last_order_id', orderId);
+
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const todayStr = new Date().toLocaleDateString('en-IN', options);
+
+      document.getElementById('disp-order-id').innerText = '#' + orderId.replace('#', '');
+      document.getElementById('disp-order-date').innerText = todayStr;
+
+      // Determine items from cart or last order snapshot
+      let orderItems = [];
+      if (cartItems && cartItems.length > 0) {
+        orderItems = [...cartItems];
+        localStorage.setItem('aroma_last_order_items', JSON.stringify(orderItems));
+        // Clear current active cart now that order is confirmed
+        localStorage.removeItem('aroma_qasr_cart');
+        cartItems = [];
+      } else {
+        try {
+          orderItems = JSON.parse(localStorage.getItem('aroma_last_order_items')) || [];
+        } catch (e) { }
+      }
+
+      // If no items are found, display clean empty state (NO DEMO PRODUCTS)
+      const container = document.getElementById('confirmed-items-container');
+      container.innerHTML = '';
+      let totalAmount = 0;
+
+      if (!orderItems || orderItems.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding: 36px 16px; color: #777; font-size: 14.5px;">
+            <p style="margin-bottom: 12px;">No active order items found.</p>
+            <a href="collections.html" style="color: #E85038; font-weight: 700; text-decoration: none; font-size: 13.5px; text-transform: uppercase; letter-spacing: 0.06em;">
+              Explore Fragrances &rarr;
+            </a>
+          </div>
+        `;
+        document.getElementById('disp-subtotal').innerText = '₹0';
+        document.getElementById('disp-total').innerText = '₹0';
+        updateCartUI();
+        return;
+      }
+
+      orderItems.forEach(item => {
+        const qty = item.quantity || 1;
+        const price = item.price || 0;
+        const itemTotal = price * qty;
+        totalAmount += itemTotal;
+        const size = item.size || 'Eau De Parfum';
+
+        const row = document.createElement('div');
+        row.className = 'order-item-row';
+        row.innerHTML = `
+          ${item.image ? `<img src="${item.image}" alt="${item.name || 'Perfume'}" class="order-item-thumb">` : ''}
+          <div class="order-item-meta">
+            <h4 class="order-item-name">${item.name || 'Luxury Fragrance'}</h4>
+            <div class="order-item-submeta">
+              <span>Qty: ${qty}</span>
+              <span>•</span>
+              <span>${size}</span>
+            </div>
+          </div>
+          <div class="order-item-price">₹${itemTotal.toLocaleString('en-IN')}</div>
+        `;
+        container.appendChild(row);
+      });
+
+      document.getElementById('disp-subtotal').innerText = '₹' + totalAmount.toLocaleString('en-IN');
+      document.getElementById('disp-total').innerText = '₹' + totalAmount.toLocaleString('en-IN');
+
+      // Sync with user's previous orders history
+      if (window.addConfirmedOrderToHistory) {
+        window.addConfirmedOrderToHistory({
+          id: '#' + orderId.replace('#', ''),
+          date: todayStr,
+          status: 'Confirmed',
+          items: orderItems,
+          total: totalAmount
+        });
+      }
+
+      updateCartUI();
+    }
+
+    // Cart Drawer UI functions
+    function updateCartUI() {
+      const badge = document.getElementById('nav-cart-count');
+      if (badge) badge.innerText = '0';
+    }
+
+    window.openCart = function () {
+      document.getElementById('cart-drawer').classList.add('open');
+      document.getElementById('cart-backdrop').classList.add('open');
+    };
+
+    window.closeCart = function () {
+      document.getElementById('cart-drawer').classList.remove('open');
+      document.getElementById('cart-backdrop').classList.remove('open');
+    };
+
+    window.proceedToCheckout = function () {
+      window.location.href = 'collections.html';
+    };
+
+    document.addEventListener('DOMContentLoaded', renderConfirmedOrder);
+  </script>
+  <script src="js/auth.js"></script>
+  <script src="js/loader.js"></script>
+</body>
+
+</html>

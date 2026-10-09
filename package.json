@@ -1,0 +1,15 @@
+{
+  "name": "Aroma Qasr-luxury-perfumes",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npx netlify-cli deploy --prod --dir=dist"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

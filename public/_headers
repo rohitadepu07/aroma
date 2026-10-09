@@ -1,0 +1,7 @@
+/videos/*
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: video/mp4
+  Accept-Ranges: bytes
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

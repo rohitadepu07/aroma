@@ -1,0 +1,820 @@
+/* ==========================================================
+   Aroma Qasr - Login & Authentication Styles (with Popup as requested)
+   ========================================================== */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Login Button in Navbar */
+.nav-auth-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-login-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  color: #111111;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  line-height: 1;
+  user-select: none;
+}
+
+.nav-login-btn:hover {
+  background: rgba(232, 80, 56, 0.08);
+  border-color: #E85038;
+  color: #E85038;
+  transform: translateY(-1px);
+}
+
+.nav-login-btn svg.auth-icon {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+}
+
+.nav-login-btn svg.auth-chevron {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.nav-auth-wrapper.active .nav-login-btn svg.auth-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-login-btn.logged-in {
+  background: rgba(232, 80, 56, 0.1);
+  border-color: rgba(232, 80, 56, 0.3);
+  color: #E85038;
+}
+
+/* Pulsing highlight effect when user tries to add/buy while logged out */
+@keyframes authPromptPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(40, 116, 240, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(40, 116, 240, 0);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(40, 116, 240, 0);
+    transform: scale(1);
+  }
+}
+
+.nav-auth-wrapper.prompt-highlight .nav-login-btn {
+  border-color: #2874F0;
+  color: #2874F0;
+  animation: authPromptPulse 1.2s ease infinite;
+}
+
+/* ----------------------------------------------------------
+   Blue Arrow Popup (Exact match to requested UI mockup)
+   ---------------------------------------------------------- */
+.auth-popup-bubble {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  background: #2874F0;
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 10px 16px;
+  min-width: 130px;
+  box-shadow: 0 10px 30px rgba(40, 116, 240, 0.35), 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(6px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  pointer-events: none;
+}
+
+.auth-popup-bubble.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* Pointer Arrow on Top */
+.auth-popup-bubble::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #2874F0;
+}
+
+.auth-popup-bubble .bubble-login-btn {
+  background: #FFFFFF;
+  color: #2874F0;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, color 0.2s;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.auth-popup-bubble .bubble-login-btn:hover {
+  background: #f0f4ff;
+  transform: scale(1.02);
+}
+
+.auth-popup-bubble .bubble-subtext {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 6px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.auth-popup-bubble .bubble-subtext a {
+  color: #FFFFFF;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------
+   Logged In Dropdown Menu
+   ---------------------------------------------------------- */
+.auth-user-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: #FFFFFF;
+  color: #111111;
+  border-radius: 12px;
+  padding: 10px 0;
+  min-width: 190px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  pointer-events: none;
+}
+
+.auth-user-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.auth-user-dropdown-header {
+  padding: 8px 16px 10px;
+  border-bottom: 1px solid #F0F0F0;
+  font-size: 12.5px;
+  color: #777;
+}
+
+.auth-user-dropdown-header strong {
+  display: block;
+  color: #111;
+  font-size: 14px;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.auth-dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  color: #333;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.auth-dropdown-link:hover {
+  background: #F8F8F8;
+  color: #E85038;
+}
+
+.auth-dropdown-link.logout {
+  color: #D93829;
+  border-top: 1px solid #F0F0F0;
+  margin-top: 4px;
+  padding-top: 11px;
+}
+
+/* ----------------------------------------------------------
+   Auth Modal (Login / Sign Up)
+   ---------------------------------------------------------- */
+.auth-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.auth-modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.auth-modal-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -46%) scale(0.96);
+  width: 90%;
+  max-width: 420px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  padding: 32px 28px 28px;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s;
+}
+
+.auth-modal-dialog.open {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.auth-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: #F3F3F3;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 20px;
+  transition: all 0.2s;
+}
+
+.auth-modal-close:hover {
+  background: #E85038;
+  color: #FFFFFF;
+}
+
+.auth-modal-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.auth-modal-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #E85038;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.auth-modal-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 0 6px;
+}
+
+.auth-modal-subtitle {
+  font-size: 13.5px;
+  color: #777;
+  margin: 0;
+}
+
+.auth-form-group {
+  margin-bottom: 16px;
+}
+
+.auth-form-label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.auth-form-input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1.5px solid #E2E2E2;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  color: #111;
+  background: #FAFAFA;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.auth-form-input:focus {
+  border-color: #2874F0;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(40, 116, 240, 0.12);
+}
+
+.auth-submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: #2874F0;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 6px 18px rgba(40, 116, 240, 0.3);
+  margin-top: 6px;
+}
+
+.auth-submit-btn:hover {
+  background: #1a64de;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(40, 116, 240, 0.4);
+}
+
+.auth-demo-quick-btn {
+  width: 100%;
+  padding: 11px;
+  background: #F7F8FA;
+  color: #333;
+  border: 1px dashed #CCC;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.2s;
+}
+
+.auth-demo-quick-btn:hover {
+  background: #EEF2F6;
+  border-color: #999;
+}
+
+.auth-modal-footer {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 12.5px;
+  color: #777;
+}
+
+.auth-modal-footer a {
+  color: #2874F0;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.auth-modal-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Toast message for auth notifications */
+.auth-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background: #111111;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s;
+  pointer-events: none;
+}
+
+.auth-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==========================================================
+   Account Portal Modal (Profile Editor & Previous Orders)
+   ========================================================== */
+.account-portal-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -46%) scale(0.96);
+  width: 92%;
+  max-width: 680px;
+  max-height: 88vh;
+  background: #FFFFFF;
+  border-radius: 24px;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s;
+  overflow: hidden;
+}
+
+.account-portal-dialog.open {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.account-portal-header {
+  padding: 24px 28px 18px;
+  border-bottom: 1px solid #EFEFEF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FAFAFA;
+}
+
+.account-user-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.account-user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E85038, #FF8066);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(232, 80, 56, 0.3);
+}
+
+.account-user-meta h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 0 3px;
+}
+
+.account-user-meta span {
+  font-size: 12.5px;
+  color: #777;
+}
+
+/* Tabs switcher */
+.account-tabs-nav {
+  display: flex;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #EFEFEF;
+}
+
+.account-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 20px;
+  border: 1px solid #E5E5E5;
+  background: #FAFAFA;
+  color: #555;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.account-tab-btn:hover {
+  background: #F0F0F0;
+  color: #111;
+}
+
+.account-tab-btn.active {
+  background: #E85038;
+  color: #FFFFFF;
+  border-color: #E85038;
+  box-shadow: 0 4px 12px rgba(232, 80, 56, 0.25);
+}
+
+.account-tab-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+.account-tab-content-wrap {
+  padding: 24px 28px;
+  overflow-y: auto;
+  max-height: calc(88vh - 170px);
+  -webkit-overflow-scrolling: touch;
+}
+
+.account-tab-pane {
+  display: none;
+}
+
+.account-tab-pane.active {
+  display: block;
+  animation: tabFadeIn 0.25s ease;
+}
+
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Edit Profile Form Grid */
+.profile-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .profile-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.profile-form-grid .full-span {
+  grid-column: 1 / -1;
+}
+
+.profile-save-btn {
+  background: #E85038;
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 6px 18px rgba(232, 80, 56, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.profile-save-btn:hover {
+  background: #D93829;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(232, 80, 56, 0.4);
+}
+
+/* Previous Orders List */
+.orders-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order-history-card {
+  border: 1px solid #EBEBEB;
+  border-radius: 16px;
+  background: #FAFAFA;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.order-history-card:hover {
+  border-color: rgba(232, 80, 56, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.order-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #EFEFEF;
+}
+
+.order-card-id-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.order-card-id {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: #111111;
+}
+
+.order-card-date {
+  font-size: 12px;
+  color: #888;
+}
+
+.order-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: #E8F7EE;
+  color: #1F9254;
+}
+
+.order-status-badge.in-transit {
+  background: #EBF3FF;
+  color: #2874F0;
+}
+
+.order-status-badge.processing {
+  background: #FFF5E5;
+  color: #D9822B;
+}
+
+.order-card-items {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-item-mini {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.order-item-mini-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.order-item-mini-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #EEE;
+}
+
+.order-item-mini-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #222;
+  margin: 0 0 2px;
+}
+
+.order-item-mini-sub {
+  font-size: 12px;
+  color: #777;
+}
+
+.order-item-mini-price {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #111;
+}
+
+.order-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: #FFFFFF;
+  border-top: 1px solid #EFEFEF;
+}
+
+.order-total-amount {
+  font-size: 14px;
+  font-weight: 700;
+  color: #E85038;
+}
+
+.order-action-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.order-view-receipt-btn {
+  background: #F2F2F2;
+  color: #333;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.order-view-receipt-btn:hover {
+  background: #E85038;
+  color: #FFFFFF;
+}
+
+.order-empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #777;
+}
+
+.order-empty-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  stroke: #CCC;
+}
+
+.order-empty-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 6px;
+}
+
+.order-empty-desc {
+  font-size: 13.5px;
+  color: #777;
+  max-width: 320px;
+  margin: 0 auto 18px;
+}
+
