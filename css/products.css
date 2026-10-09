@@ -5,6 +5,11 @@
 
 @import 'hero-carousel.css';
 
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+}
+
 /* =============================================
    PROMO MARQUEE BANNER (MOVING TEXT)
    ============================================= */

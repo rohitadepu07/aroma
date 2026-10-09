@@ -8,7 +8,20 @@
       <div class="preloader-content">
         <div class="preloader-emblem">
           <div class="preloader-emblem-ring"></div>
-          <img src="images/AQ-icon.png" alt="Aroma Qasr Emblem" />
+          <svg class="preloader-svg-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="aqPreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFA08A"/>
+                <stop offset="50%" stop-color="#E85038"/>
+                <stop offset="100%" stop-color="#B82C18"/>
+              </linearGradient>
+            </defs>
+            <circle cx="32" cy="32" r="28" fill="rgba(232,80,56,0.08)" stroke="url(#aqPreGrad)" stroke-width="1.8"/>
+            <path d="M32 14 L34 20 L30 20 Z" fill="#FFA08A"/>
+            <rect x="29" y="20" width="6" height="3" rx="0.8" fill="#FFFFFF"/>
+            <path d="M23 25 C23 23.5, 41 23.5, 41 25 L44 47 C44 50, 20 50, 20 47 Z" fill="url(#aqPreGrad)" stroke="#FFA08A" stroke-width="1.2"/>
+            <text x="32" y="39" font-family="'Playfair Display', serif" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">AQ</text>
+          </svg>
         </div>
         <h2 class="preloader-brand-title">Aroma Qasr</h2>
         <span class="preloader-brand-sub">Maison De Parfum • Crafting Experience</span>
